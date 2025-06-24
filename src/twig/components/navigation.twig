@@ -1,0 +1,128 @@
+<!-- components/navigation.twig -->
+<section id="navigation" class="rf-section">
+    <h2>Navigation accessible</h2>
+    <p>Menus de navigation avec support clavier complet et indication de la page courante.</p>
+    
+    <h3>Navigation horizontale</h3>
+    <div class="rf-example">
+        <nav class="rf-nav rf-nav-horizontal" role="navigation" aria-label="Exemple navigation horizontale">
+            <ul>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link" aria-current="page">Accueil</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Services</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">À propos</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Contact</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link rf-disabled">Bientôt disponible</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <h3>Navigation verticale</h3>
+    <div class="rf-example">
+        <nav class="rf-nav rf-nav-vertical" role="navigation" aria-label="Menu latéral" style="max-width: 250px;">
+            <ul>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Tableau de bord</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link" aria-current="page">Profil utilisateur</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Paramètres</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Aide</a>
+                </li>
+                <li class="rf-nav-item">
+                    <a href="#" class="rf-nav-link">Déconnexion</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <h3>Navbar responsive</h3>
+    <div class="rf-example">
+        <nav class="rf-navbar rf-navbar-light" role="navigation" aria-label="Navigation principale du site" style="background-color: #f8f9fa;">
+            <div class="rf-container">
+                <a class="rf-navbar-brand" href="#">Mon Site Web</a>
+                
+                <button class="rf-navbar-toggler" type="button">
+                    <span class="rf-sr-only">Basculer la navigation</span>
+                </button>
+                
+                <div class="rf-navbar-collapse">
+                    <ul class="rf-navbar-nav">
+                        <li><a href="#" class="rf-nav-link">Accueil</a></li>
+                        <li><a href="#" class="rf-nav-link">Produits</a></li>
+                        <li><a href="#" class="rf-nav-link">Services</a></li>
+                        <li><a href="#" class="rf-nav-link">Blog</a></li>
+                        <li><a href="#" class="rf-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <h3>Navbar sombre</h3>
+    <div class="rf-example">
+        <nav class="rf-navbar rf-navbar-dark" role="navigation" aria-label="Navigation sombre" style="background-color: #343a40;">
+            <div class="rf-container">
+                <a class="rf-navbar-brand" href="#">Brand Sombre</a>
+                
+                <button class="rf-navbar-toggler" type="button">
+                    <span class="rf-sr-only">Basculer la navigation</span>
+                </button>
+                
+                <div class="rf-navbar-collapse">
+                    <ul class="rf-navbar-nav">
+                        <li><a href="#" class="rf-nav-link">Accueil</a></li>
+                        <li><a href="#" class="rf-nav-link">Portfolio</a></li>
+                        <li><a href="#" class="rf-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Navigation clavier avec flèches directionnelles</li>
+            <li>Page courante indiquée par <code>aria-current="page"</code></li>
+            <li>Labels explicites avec <code>aria-label</code></li>
+            <li>Menu mobile accessible avec <code>aria-expanded</code></li>
+            <li>Focus visible sur tous les liens</li>
+            <li>Rôle <code>navigation</code> pour identifier les zones de navigation</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;nav class="rf-navbar rf-navbar-light" role="navigation" aria-label="Navigation principale"&gt;
+    &lt;div class="rf-container"&gt;
+        &lt;a class="rf-navbar-brand" href="#"&gt;Mon Site&lt;/a&gt;
+        
+        &lt;button class="rf-navbar-toggler" type="button"&gt;
+            &lt;span class="rf-sr-only"&gt;Basculer la navigation&lt;/span&gt;
+        &lt;/button&gt;
+        
+        &lt;div class="rf-navbar-collapse"&gt;
+            &lt;ul class="rf-navbar-nav"&gt;
+                &lt;li&gt;&lt;a href="#" class="rf-nav-link" aria-current="page"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="rf-nav-link"&gt;Services&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="rf-nav-link"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+</section>

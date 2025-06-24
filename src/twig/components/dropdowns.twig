@@ -1,0 +1,140 @@
+<!-- components/dropdowns.twig -->
+<section id="dropdowns" class="rf-section">
+    <h2>Menus déroulants</h2>
+    <p>Dropdowns accessibles avec navigation clavier et gestion des états ARIA.</p>
+    
+    <h3>Dropdown basique</h3>
+    <div class="rf-example">
+        <div class="rf-dropdown">
+            <button class="rf-dropdown-toggle rf-btn rf-btn-primary" type="button">
+                Actions disponibles
+            </button>
+            
+            <div class="rf-dropdown-menu">
+                <a class="rf-dropdown-item" href="#">Modifier</a>
+                <a class="rf-dropdown-item" href="#">Dupliquer</a>
+                <div class="rf-dropdown-divider"></div>
+                <a class="rf-dropdown-item" href="#">Partager</a>
+                <a class="rf-dropdown-item" href="#">Exporter</a>
+                <div class="rf-dropdown-divider"></div>
+                <a class="rf-dropdown-item rf-disabled">Action indisponible</a>
+                <a class="rf-dropdown-item" href="#" style="color: #dc3545;">Supprimer</a>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Dropdowns avec différents styles</h3>
+    <div class="rf-example">
+        <div class="rf-dropdown" style="display: inline-block; margin-right: 1rem;">
+            <button class="rf-dropdown-toggle rf-btn rf-btn-success" type="button">
+                Créer
+            </button>
+            
+            <div class="rf-dropdown-menu">
+                <a class="rf-dropdown-item" href="#">Nouveau document</a>
+                <a class="rf-dropdown-item" href="#">Nouveau dossier</a>
+                <a class="rf-dropdown-item" href="#">À partir d'un modèle</a>
+            </div>
+        </div>
+        
+        <div class="rf-dropdown" style="display: inline-block; margin-right: 1rem;">
+            <button class="rf-dropdown-toggle rf-btn rf-btn-outline-secondary" type="button">
+                Filtrer
+            </button>
+            
+            <div class="rf-dropdown-menu">
+                <a class="rf-dropdown-item" href="#">Tous les éléments</a>
+                <a class="rf-dropdown-item" href="#">Documents récents</a>
+                <a class="rf-dropdown-item" href="#">Mes favoris</a>
+                <a class="rf-dropdown-item" href="#">Partagés avec moi</a>
+            </div>
+        </div>
+        
+        <div class="rf-dropdown" style="display: inline-block;">
+            <button class="rf-dropdown-toggle rf-btn rf-btn-warning" type="button">
+                Paramètres
+            </button>
+            
+            <div class="rf-dropdown-menu">
+                <a class="rf-dropdown-item" href="#">Préférences générales</a>
+                <a class="rf-dropdown-item" href="#">Notifications</a>
+                <a class="rf-dropdown-item" href="#">Confidentialité</a>
+                <div class="rf-dropdown-divider"></div>
+                <a class="rf-dropdown-item" href="#">Aide et support</a>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Dropdown dans navigation</h3>
+    <div class="rf-example">
+        <nav class="rf-navbar rf-navbar-light" style="background-color: #e9ecef;">
+            <div class="rf-container">
+                <a class="rf-navbar-brand" href="#">Site avec menus</a>
+                
+                <div class="rf-navbar-collapse">
+                    <ul class="rf-navbar-nav">
+                        <li><a href="#" class="rf-nav-link">Accueil</a></li>
+                        
+                        <li class="rf-nav-item rf-dropdown">
+                            <a class="rf-nav-link rf-dropdown-toggle" href="#" role="button">
+                                Nos services
+                            </a>
+                            
+                            <div class="rf-dropdown-menu">
+                                <a class="rf-dropdown-item" href="#">Développement web</a>
+                                <a class="rf-dropdown-item" href="#">Applications mobiles</a>
+                                <a class="rf-dropdown-item" href="#">Conseil en accessibilité</a>
+                                <div class="rf-dropdown-divider"></div>
+                                <a class="rf-dropdown-item" href="#">Formation</a>
+                            </div>
+                        </li>
+                        
+                        <li class="rf-nav-item rf-dropdown">
+                            <a class="rf-nav-link rf-dropdown-toggle" href="#" role="button">
+                                Ressources
+                            </a>
+                            
+                            <div class="rf-dropdown-menu">
+                                <a class="rf-dropdown-item" href="#">Documentation</a>
+                                <a class="rf-dropdown-item" href="#">Tutoriels</a>
+                                <a class="rf-dropdown-item" href="#">Blog</a>
+                                <a class="rf-dropdown-item" href="#">FAQ</a>
+                            </div>
+                        </li>
+                        
+                        <li><a href="#" class="rf-nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Navigation clavier : Flèche bas/haut pour naviguer dans le menu</li>
+            <li>Fermeture avec Échap</li>
+            <li>Attributs ARIA : <code>aria-haspopup</code>, <code>aria-expanded</code></li>
+            <li>Rôles appropriés : <code>role="menu"</code> et <code>role="menuitem"</code></li>
+            <li>Fermeture automatique en cliquant à l'extérieur</li>
+            <li>Support des éléments désactivés</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;div class="rf-dropdown"&gt;
+    &lt;button class="rf-dropdown-toggle rf-btn rf-btn-primary" type="button"&gt;
+        Actions
+    &lt;/button&gt;
+    
+    &lt;div class="rf-dropdown-menu"&gt;
+        &lt;a class="rf-dropdown-item" href="#"&gt;Action 1&lt;/a&gt;
+        &lt;a class="rf-dropdown-item" href="#"&gt;Action 2&lt;/a&gt;
+        &lt;div class="rf-dropdown-divider"&gt;&lt;/div&gt;
+        &lt;a class="rf-dropdown-item" href="#"&gt;Action 3&lt;/a&gt;
+        &lt;a class="rf-dropdown-item rf-disabled"&gt;Action désactivée&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</section>

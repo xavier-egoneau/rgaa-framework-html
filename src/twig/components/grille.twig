@@ -1,0 +1,86 @@
+<!-- components/grille.twig -->
+<section id="grille" class="rf-section">
+    <h2>Système de grille responsive</h2>
+    <p>Grille flexible basée sur Flexbox, mobile-first et entièrement accessible.</p>
+    
+    <h3>Conteneurs</h3>
+    <div class="rf-example">
+        <div class="rf-container" style="background: #f8f9fa; padding: 1rem; margin-bottom: 1rem;">
+            <p><strong>Conteneur fixe</strong> - Centré avec largeur maximale responsive</p>
+        </div>
+        
+        <div class="rf-container-fluid" style="background: #e9ecef; padding: 1rem;">
+            <p><strong>Conteneur fluide</strong> - Pleine largeur avec padding</p>
+        </div>
+    </div>
+    
+    <h3>Colonnes égales</h3>
+    <div class="rf-example">
+        <div class="rf-row">
+            <div class="rf-col" style="background: #d1ecf1; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Colonne 1/3</p>
+            </div>
+            <div class="rf-col" style="background: #bee5eb; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Colonne 2/3</p>
+            </div>
+            <div class="rf-col" style="background: #abdde5; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Colonne 3/3</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Colonnes spécifiques</h3>
+    <div class="rf-example">
+        <div class="rf-row">
+            <div class="rf-col-md-8" style="background: #d4edda; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>8/12 colonnes - Contenu principal</p>
+            </div>
+            <div class="rf-col-md-4" style="background: #c3e6cb; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>4/12 colonnes - Sidebar</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Responsive</h3>
+    <div class="rf-example">
+        <div class="rf-row">
+            <div class="rf-col-12 rf-col-md-6 rf-col-lg-4" style="background: #f8d7da; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Mobile: 100% | Tablet: 50% | Desktop: 33%</p>
+            </div>
+            <div class="rf-col-12 rf-col-md-6 rf-col-lg-4" style="background: #f5c6cb; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Mobile: 100% | Tablet: 50% | Desktop: 33%</p>
+            </div>
+            <div class="rf-col-12 rf-col-md-12 rf-col-lg-4" style="background: #f1b0b7; padding: 1rem; margin-bottom: 0.5rem;">
+                <p>Mobile: 100% | Tablet: 100% | Desktop: 33%</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Alignement</h3>
+    <div class="rf-example">
+        <div class="rf-row rf-justify-center rf-align-center" style="height: 100px; background: #fff3cd;">
+            <div class="rf-col-auto" style="background: #ffeaa7; padding: 1rem;">
+                <p>Centré horizontal et vertical</p>
+            </div>
+        </div>
+        
+        <div class="rf-row rf-justify-between" style="background: #d1f2eb; padding: 1rem; margin-top: 1rem;">
+            <div class="rf-col-auto" style="background: #a3e4d7; padding: 0.5rem;">
+                <p>Gauche</p>
+            </div>
+            <div class="rf-col-auto" style="background: #76d7c4; padding: 0.5rem;">
+                <p>Droite</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;div class="rf-container"&gt;
+    &lt;div class="rf-row"&gt;
+        &lt;div class="rf-col-md-8"&gt;Contenu principal&lt;/div&gt;
+        &lt;div class="rf-col-md-4"&gt;Sidebar&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</section>

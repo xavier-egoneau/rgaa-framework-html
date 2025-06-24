@@ -1,0 +1,353 @@
+// components/_navigation.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === VARIABLES NAVIGATION ===
+$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-x: 1rem !default;
+$nav-link-color: get-color('primary') !default;
+$nav-link-hover-color: darken-color($nav-link-color, 15%) !default;
+$nav-link-disabled-color: get-color('secondary') !default;
+
+$navbar-padding-y: 0.5rem !default;
+$navbar-padding-x: 1rem !default;
+$navbar-brand-font-size: 1.25rem !default;
+$navbar-toggler-padding-y: 0.25rem !default;
+$navbar-toggler-padding-x: 0.75rem !default;
+$navbar-toggler-font-size: 1.25rem !default;
+$navbar-toggler-border-radius: 0.25rem !default;
+
+// === NAVIGATION DE BASE ===
+.rf-nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.rf-nav-link {
+  display: block;
+  padding: $nav-link-padding-y $nav-link-padding-x;
+  color: $nav-link-color;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+  
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+  
+  &:hover,
+  &:focus {
+    color: $nav-link-hover-color;
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+  
+  // État actuel
+  &[aria-current="page"],
+  &.rf-active {
+    color: get-color('dark');
+    font-weight: 600;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: get-color('primary');
+    }
+  }
+  
+  // Lien désactivé
+  &.rf-disabled,
+  &[aria-disabled="true"] {
+    color: $nav-link-disabled-color;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+// === NAVIGATION HORIZONTALE ===
+.rf-nav-horizontal {
+  .rf-nav-item {
+    position: relative;
+  }
+  
+  .rf-nav-link {
+    position: relative;
+  }
+
+  &.rf-active {
+    color: get-color('secondary');
+    font-weight: 600;
+  }
+}
+
+// === NAVIGATION VERTICALE ===
+.rf-nav-vertical {
+  flex-direction: column;
+  
+  .rf-nav-item {
+    width: 100%;
+  }
+}
+
+// === MENU DÉROULANT ===
+.rf-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.rf-dropdown-toggle {
+  // Propriétés CSS avant le mixin
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid transparent;
+  
+  @include button-base;
+  
+  &::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    speak: none;
+  }
+  
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+}
+
+.rf-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: get-color('dark');
+  text-align: left;
+  list-style: none;
+  background-color: get-color('white');
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  
+  &.rf-show {
+    display: block;
+  }
+}
+
+.rf-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: get-color('dark');
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  
+  &:hover,
+  &:focus {
+    color: darken-color(get-color('dark'), 15%);
+    background-color: get-color('light');
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+  
+  &.rf-active,
+  &[aria-current="true"] {
+    color: get-color('white');
+    background-color: get-color('primary');
+  }
+  
+  &.rf-disabled,
+  &[aria-disabled="true"] {
+    color: get-color('secondary');
+    pointer-events: none;
+    background-color: transparent;
+  }
+}
+
+// === BARRE DE NAVIGATION ===
+.rf-navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $navbar-padding-y $navbar-padding-x;
+  
+  // Brand/logo
+  .rf-navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: $navbar-brand-font-size;
+    font-weight: bold;
+    line-height: inherit;
+    text-decoration: none;
+    color: inherit;
+    
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    &:focus {
+      @include focus-ring();
+    }
+  }
+  
+  // Navigation principale
+  .rf-navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    
+    .rf-nav-link {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
+    @include breakpoint(lg) {
+      flex-direction: row;
+      
+      .rf-nav-link {
+        padding-right: $nav-link-padding-x;
+        padding-left: $nav-link-padding-x;
+      }
+    }
+  }
+  
+  // Bouton de basculement mobile
+  .rf-navbar-toggler {
+    // TOUTES les propriétés CSS AVANT le mixin
+    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    font-size: $navbar-toggler-font-size;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid get-color('secondary');
+    border-radius: $navbar-toggler-border-radius;
+    
+    // PUIS le mixin (qui contient des nested rules)
+    @include button-base;
+    
+    // PUIS les nested rules
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: rgba(get-color('secondary'), 0.1);
+    }
+    
+    &:focus {
+      @include focus-ring();
+    }
+    
+    // Icône hamburger
+    &::before {
+      content: "☰";
+      font-size: 1.2em;
+    }
+  }
+}
+
+// === COLLAPSE (pour mobile) ===
+.rf-navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  
+  &:not(.rf-show) {
+    display: none;
+  }
+  
+  @include breakpoint(lg) {
+    display: flex !important;
+    flex-basis: auto;
+  }
+}
+
+// === NAVBAR VARIANTS ===
+.rf-navbar-light {
+  .rf-navbar-brand,
+  .rf-nav-link {
+    color: rgba(0, 0, 0, 0.9);
+    
+    &:hover,
+    &:focus {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  
+  .rf-navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.55);
+  }
+}
+
+.rf-navbar-dark {
+  .rf-navbar-brand,
+  .rf-nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    
+    &:hover,
+    &:focus {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+  
+  .rf-navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+// === NAVBAR FIXED ===
+.rf-navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.rf-navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.rf-navbar-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}

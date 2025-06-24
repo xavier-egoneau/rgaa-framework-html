@@ -1,0 +1,31 @@
+// utilities/_focus.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === FOCUS RING PERSONNALISABLE ===
+.rf-focus-ring {
+  @include focus-ring();
+}
+
+.rf-focus-primary {
+  @include focus-ring(get-color('primary'));
+}
+
+.rf-focus-danger {
+  @include focus-ring(get-color('danger'));
+}
+
+// === GESTION FOCUS POUR COMPOSANTS ===
+.rf-focus-trap {
+  // Conteneur de piège à focus (utilisé par JS)
+  isolation: isolate;
+}
+
+// === INDICATEUR DE FOCUS VISIBLE ===
+.rf-focus-visible {
+  &:focus-visible {
+    outline: $focus-width $focus-style $focus-color;
+    outline-offset: $focus-offset;
+  }
+}

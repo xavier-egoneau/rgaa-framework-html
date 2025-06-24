@@ -1,0 +1,47 @@
+// _variables.scss
+
+@use "sass:map";
+
+// === COULEURS CONFORMES ===
+// Ratios de contraste pré-calculés (4.5:1 minimum)
+$colors: (
+  'primary': #0053b3,      // Bleu accessible sur blanc
+  'secondary': #6c757d,    // Gris accessible
+  'success': #198754,      // Vert accessible
+  'danger': #dc3545,       // Rouge accessible
+  'warning': #fd7e14,      // Orange accessible
+  'info': #0dcaf0,         // Cyan accessible
+  'light': #f8f9fa,
+  'dark': #212529,
+  'white': #ffffff,
+  'black': #000000
+) !default;
+
+// === FOCUS ===
+$focus-color: #005fcc !default;
+$focus-width: 2px !default;
+$focus-style: solid !default;
+$focus-offset: 2px !default;
+
+// === GRILLE ===
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// === TYPOGRAPHIE ===
+$font-size-base: 1rem !default;        // 16px par défaut
+$line-height-base: 1.5 !default;       // RGAA recommandé
+$font-weight-base: 400 !default;

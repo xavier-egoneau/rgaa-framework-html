@@ -1,0 +1,302 @@
+// components/_dropdowns.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === VARIABLES DROPDOWNS ===
+$dropdown-min-width: 10rem !default;
+$dropdown-padding-y: 0.5rem !default;
+$dropdown-spacer: 0.125rem !default;
+$dropdown-font-size: 1rem !default;
+$dropdown-color: get-color('dark') !default;
+$dropdown-bg: get-color('white') !default;
+$dropdown-border-color: rgba(0, 0, 0, 0.15) !default;
+$dropdown-border-radius: 0.25rem !default;
+$dropdown-border-width: 1px !default;
+$dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175) !default;
+
+$dropdown-link-color: get-color('dark') !default;
+$dropdown-link-hover-color: darken-color(get-color('dark'), 5%) !default;
+$dropdown-link-hover-bg: get-color('light') !default;
+$dropdown-link-active-color: get-color('white') !default;
+$dropdown-link-active-bg: get-color('primary') !default;
+$dropdown-link-disabled-color: get-color('secondary') !default;
+
+$dropdown-item-padding-y: 0.25rem !default;
+$dropdown-item-padding-x: 1rem !default;
+
+$dropdown-header-color: get-color('secondary') !default;
+$dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x !default;
+
+// === DROPDOWN CONTENEUR ===
+.rf-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+// === BOUTON TOGGLE ===
+.rf-dropdown-toggle {
+  // Propriétés CSS avant le mixin
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid transparent;
+  
+  @include button-base;
+  
+  // Icône flèche
+  &::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    @include transition(transform, 0.2s, ease-in-out);
+  }
+  
+  // Rotation de la flèche quand ouvert
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+  
+  // Supprime l'icône pour les liens dans navbar
+  &.rf-nav-link::after {
+    display: none;
+  }
+}
+
+// === MENU DROPDOWN ===
+.rf-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: $dropdown-min-width;
+  padding: $dropdown-padding-y 0;
+  margin: $dropdown-spacer 0 0;
+  font-size: $dropdown-font-size;
+  color: $dropdown-color;
+  text-align: left;
+  list-style: none;
+  background-color: $dropdown-bg;
+  background-clip: padding-box;
+  border: $dropdown-border-width solid $dropdown-border-color;
+  border-radius: $dropdown-border-radius;
+  box-shadow: $dropdown-box-shadow;
+  
+  // Menu affiché
+  &.rf-show {
+    display: block;
+  }
+  
+  // Animation d'apparition
+  &.rf-fade {
+    opacity: 0;
+    @include transition(opacity, 0.15s, linear);
+    
+    &.rf-show {
+      opacity: 1;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+    }
+  }
+}
+
+// === ITEMS DU MENU ===
+.rf-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  clear: both;
+  font-weight: 400;
+  color: $dropdown-link-color;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  @include transition(all, 0.15s, ease-in-out);
+  
+  // États hover et focus
+  &:hover,
+  &:focus {
+    color: $dropdown-link-hover-color;
+    background-color: $dropdown-link-hover-bg;
+    text-decoration: none;
+  }
+  
+  &:focus {
+    @include focus-ring();
+    outline-offset: -2px;
+  }
+  
+  // Item actif
+  &.rf-active,
+  &[aria-current="true"] {
+    color: $dropdown-link-active-color;
+    background-color: $dropdown-link-active-bg;
+    text-decoration: none;
+  }
+  
+  // Item désactivé
+  &.rf-disabled,
+  &[aria-disabled="true"] {
+    color: $dropdown-link-disabled-color;
+    pointer-events: none;
+    background-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
+// === HEADER ET DIVIDERS ===
+.rf-dropdown-header {
+  display: block;
+  padding: $dropdown-header-padding;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: $dropdown-header-color;
+  white-space: nowrap;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rf-dropdown-divider {
+  height: 0;
+  margin: calc(#{$dropdown-padding-y} / 2) 0;
+  overflow: hidden;
+  border-top: 1px solid $dropdown-border-color;
+}
+
+.rf-dropdown-text {
+  display: block;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  color: $dropdown-color;
+}
+
+// === POSITIONNEMENT ALTERNATIF ===
+.rf-dropdown-menu-end {
+  right: 0;
+  left: auto;
+}
+
+.rf-dropdown-menu-start {
+  right: auto;
+  left: 0;
+}
+
+// Dropdown vers le haut
+.rf-dropup {
+  .rf-dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: $dropdown-spacer;
+  }
+  
+  .rf-dropdown-toggle::after {
+    border-top: 0;
+    border-bottom: 0.3em solid;
+  }
+}
+
+// Dropdown vers la droite
+.rf-dropend {
+  .rf-dropdown-menu {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: $dropdown-spacer;
+  }
+  
+  .rf-dropdown-toggle::after {
+    border-top: 0.3em solid transparent;
+    border-right: 0;
+    border-bottom: 0.3em solid transparent;
+    border-left: 0.3em solid;
+  }
+}
+
+// Dropdown vers la gauche
+.rf-dropstart {
+  .rf-dropdown-menu {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: $dropdown-spacer;
+  }
+  
+  .rf-dropdown-toggle::after {
+    border-top: 0.3em solid transparent;
+    border-right: 0.3em solid;
+    border-bottom: 0.3em solid transparent;
+    border-left: 0;
+  }
+}
+
+// === DROPDOWNS DANS NAVBAR ===
+.rf-navbar .rf-dropdown-menu {
+  border: 0;
+  box-shadow: none;
+  
+  @include breakpoint(lg) {
+    border: $dropdown-border-width solid $dropdown-border-color;
+    box-shadow: $dropdown-box-shadow;
+  }
+}
+
+// === RESPONSIVE ===
+@include mobile-only {
+  .rf-dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+// === DARK MODE SUPPORT ===
+.rf-navbar-dark {
+  .rf-dropdown-menu {
+    background-color: darken-color(get-color('dark'), 5%);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .rf-dropdown-item {
+    color: rgba(255, 255, 255, 0.9);
+    
+    &:hover,
+    &:focus {
+      color: get-color('white');
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    &.rf-active {
+      background-color: get-color('primary');
+    }
+    
+    &.rf-disabled {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  .rf-dropdown-header {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .rf-dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}

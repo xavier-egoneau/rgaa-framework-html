@@ -1,0 +1,189 @@
+<!-- components/modales.twig -->
+<section id="modales" class="rf-section">
+    <h2>Modales accessibles</h2>
+    <p>Boîtes de dialogue avec piège à focus, gestion ESC et restauration du focus.</p>
+    
+    <h3>Exemples de modales</h3>
+    <div class="rf-example">
+        <button type="button" 
+                class="rf-btn rf-btn-primary" 
+                data-rf-modal-trigger="#modal-basique">
+            Ouvrir modale basique
+        </button>
+        
+        <button type="button" 
+                class="rf-btn rf-btn-success" 
+                data-rf-modal-trigger="#modal-formulaire">
+            Modale avec formulaire
+        </button>
+        
+        <button type="button" 
+                class="rf-btn rf-btn-warning" 
+                data-rf-modal-trigger="#modal-confirmation">
+            Modale de confirmation
+        </button>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Focus piégé dans la modale (Tab/Shift+Tab)</li>
+            <li>Fermeture avec Échap</li>
+            <li>Focus restauré sur le déclencheur</li>
+            <li>Attributs ARIA : <code>role="dialog"</code>, <code>aria-modal="true"</code></li>
+            <li>Titre associé avec <code>aria-labelledby</code></li>
+            <li>Contenu masqué aux lecteurs d'écran pendant l'ouverture</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;!-- Déclencheur --&gt;
+&lt;button type="button" 
+        class="rf-btn rf-btn-primary" 
+        data-rf-modal-trigger="#ma-modal"&gt;
+    Ouvrir la modale
+&lt;/button&gt;
+
+&lt;!-- Modale --&gt;
+&lt;dialog id="ma-modal" class="rf-modal rf-fade"&gt;
+    &lt;div class="rf-modal-dialog"&gt;
+        &lt;div class="rf-modal-content"&gt;
+            &lt;div class="rf-modal-header"&gt;
+                &lt;h4 class="rf-modal-title"&gt;Titre de la modale&lt;/h4&gt;
+                &lt;button type="button" class="rf-modal-close" data-rf-modal-close&gt;
+                    &lt;span class="rf-sr-only"&gt;Fermer&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="rf-modal-body"&gt;
+                &lt;p&gt;Contenu de la modale...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="rf-modal-footer"&gt;
+                &lt;button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close&gt;
+                    Annuler
+                &lt;/button&gt;
+                &lt;button type="button" class="rf-btn rf-btn-primary"&gt;
+                    Confirmer
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+    </div>
+</section>
+
+<!-- Modales de démonstration -->
+<dialog id="modal-basique" class="rf-modal rf-fade">
+    <div class="rf-modal-dialog">
+        <div class="rf-modal-content">
+            <div class="rf-modal-header">
+                <h4 class="rf-modal-title">Modale d'information</h4>
+                <button type="button" class="rf-modal-close" data-rf-modal-close>
+                    <span class="rf-sr-only">Fermer</span>
+                </button>
+            </div>
+            <div class="rf-modal-body">
+                <p>Cette modale démontre les bonnes pratiques d'accessibilité :</p>
+                <ul>
+                    <li>Focus piégé automatiquement dans la modale</li>
+                    <li>Fermeture avec la touche Échap</li>
+                    <li>Retour du focus sur le déclencheur à la fermeture</li>
+                    <li>Annonces appropriées aux lecteurs d'écran</li>
+                    <li>Navigation clavier complète</li>
+                </ul>
+                
+                <div class="rf-form-group">
+                    <label for="modal-test-input" class="rf-form-label">Test du focus</label>
+                    <input type="text" 
+                           id="modal-test-input" 
+                           class="rf-form-control" 
+                           placeholder="Testez la navigation avec Tab">
+                </div>
+            </div>
+            <div class="rf-modal-footer">
+                <button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close>
+                    Fermer
+                </button>
+                <button type="button" class="rf-btn rf-btn-primary">
+                    Action principale
+                </button>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<dialog id="modal-formulaire" class="rf-modal rf-fade">
+    <div class="rf-modal-dialog">
+        <div class="rf-modal-content">
+            <div class="rf-modal-header">
+                <h4 class="rf-modal-title">Contactez-nous</h4>
+                <button type="button" class="rf-modal-close" data-rf-modal-close>
+                    <span class="rf-sr-only">Fermer</span>
+                </button>
+            </div>
+            <div class="rf-modal-body">
+                <form data-rf-validate>
+                    <div class="rf-form-group">
+                        <label for="modal-nom" class="rf-form-label">
+                            Nom <span class="rf-required">obligatoire</span>
+                        </label>
+                        <input type="text" 
+                               id="modal-nom" 
+                               class="rf-form-control" 
+                               required>
+                    </div>
+                    
+                    <div class="rf-form-group">
+                        <label for="modal-email" class="rf-form-label">
+                            E-mail <span class="rf-required">obligatoire</span>
+                        </label>
+                        <input type="email" 
+                               id="modal-email" 
+                               class="rf-form-control" 
+                               required>
+                    </div>
+                    
+                    <div class="rf-form-group">
+                        <label for="modal-message" class="rf-form-label">Message</label>
+                        <textarea id="modal-message" 
+                                  class="rf-form-control rf-textarea" 
+                                  rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="rf-modal-footer">
+                <button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close>
+                    Annuler
+                </button>
+                <button type="submit" class="rf-btn rf-btn-primary">
+                    Envoyer
+                </button>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<dialog id="modal-confirmation" class="rf-modal rf-fade">
+    <div class="rf-modal-dialog rf-modal-sm">
+        <div class="rf-modal-content">
+            <div class="rf-modal-header">
+                <h4 class="rf-modal-title">Confirmer l'action</h4>
+                <button type="button" class="rf-modal-close" data-rf-modal-close>
+                    <span class="rf-sr-only">Fermer</span>
+                </button>
+            </div>
+            <div class="rf-modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+                <p><strong>Cette action est irréversible.</strong></p>
+            </div>
+            <div class="rf-modal-footer">
+                <button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close>
+                    Annuler
+                </button>
+                <button type="button" class="rf-btn rf-btn-danger">
+                    Supprimer définitivement
+                </button>
+            </div>
+        </div>
+    </div>
+</dialog>

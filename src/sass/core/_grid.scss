@@ -1,0 +1,99 @@
+// _grid.scss
+
+@use "sass:map";
+@use "sass:math";
+@use "mixins" as *;
+@use "variables" as *;
+
+// === CONTAINER ===
+.rf-container,
+.rf-container-fluid {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rf-container {
+  @each $breakpoint, $max-width in $container-max-widths {
+    @include breakpoint($breakpoint) {
+      max-width: $max-width;
+    }
+  }
+}
+
+// === ROW ===
+.rf-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.75rem;
+  margin-left: -0.75rem;
+}
+
+// === MIXIN POUR LES COLONNES ===
+@mixin col-base {
+  position: relative;
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+// === COLONNES ===
+// Génération des classes de colonnes
+@for $i from 1 through 12 {
+  .rf-col-#{$i} {
+    @include col-base;
+    flex: 0 0 math.percentage(math.div($i, 12));
+    max-width: math.percentage(math.div($i, 12));
+  }
+}
+
+// Auto-sizing
+.rf-col {
+  @include col-base;
+  flex: 1 0 0%;
+}
+
+.rf-col-auto {
+  @include col-base;
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Colonnes responsives
+@each $breakpoint in map.keys($grid-breakpoints) {
+  @include breakpoint($breakpoint) {
+    @for $i from 1 through 12 {
+      .rf-col-#{$breakpoint}-#{$i} {
+        @include col-base;
+        flex: 0 0 math.percentage(math.div($i, 12));
+        max-width: math.percentage(math.div($i, 12));
+      }
+    }
+    
+    .rf-col-#{$breakpoint} {
+      @include col-base;
+      flex: 1 0 0%;
+    }
+    
+    .rf-col-#{$breakpoint}-auto {
+      @include col-base;
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+}
+
+// === UTILITAIRES D'ALIGNEMENT ===
+.rf-justify-start { justify-content: flex-start; }
+.rf-justify-center { justify-content: center; }
+.rf-justify-end { justify-content: flex-end; }
+.rf-justify-between { justify-content: space-between; }
+.rf-justify-around { justify-content: space-around; }
+
+.rf-align-start { align-items: flex-start; }
+.rf-align-center { align-items: center; }
+.rf-align-end { align-items: flex-end; }
+.rf-align-stretch { align-items: stretch; }
+.rf-align-baseline { align-items: baseline; }

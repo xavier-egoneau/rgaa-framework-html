@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RGAA Framework{% endblock %}</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <header class="rf-header" role="banner">
+        <div class="rf-container">
+            <h1>{% block header_title %}RGAA Framework{% endblock %}</h1>
+            {% block header_content %}
+            <p>Framework CSS/JS accessible et conforme RGAA 4.1.2</p>
+            {% endblock %}
+        </div>
+    </header>
+
+    <nav class="rf-nav rf-nav-primary" role="navigation" aria-label="Navigation principale">
+        <div class="rf-container">
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#grille">Système de grille</a></li>
+                <li><a href="#composants">Composants</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="rf-main" role="main">
+        <div class="rf-container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="rf-footer" role="contentinfo">
+        <div class="rf-container">
+            <p>&copy; 2024 RGAA Framework - Conforme RGAA 4.1.2</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/rgaa.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

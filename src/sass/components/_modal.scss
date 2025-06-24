@@ -1,0 +1,240 @@
+// components/_modal.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === VARIABLES MODAL ===
+$modal-backdrop-bg: rgba(0, 0, 0, 0.5) !default;
+$modal-backdrop-opacity: 0.5 !default;
+$modal-header-border-color: #dee2e6 !default;
+$modal-footer-border-color: #dee2e6 !default;
+$modal-header-border-width: 1px !default;
+$modal-footer-border-width: 1px !default;
+$modal-header-padding-y: 1rem !default;
+$modal-header-padding-x: 1rem !default;
+$modal-footer-padding-y: 0.75rem !default;
+$modal-footer-padding-x: 1rem !default;
+$modal-inner-border-radius: 0.25rem !default;
+
+// === BACKDROP ===
+.rf-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modal-backdrop-bg;
+  
+  &.rf-fade {
+    opacity: 0;
+    
+    &.rf-show {
+      opacity: $modal-backdrop-opacity;
+    }
+  }
+}
+
+// === MODAL ===
+.rf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  
+  &.rf-fade {
+    transition: opacity 0.15s linear;
+    
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+  
+  &.rf-show {
+    display: block;
+  }
+}
+
+.rf-modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+  
+  @include breakpoint(sm) {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  
+  .rf-modal.rf-fade & {
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -50px);
+    
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      transform: none;
+    }
+  }
+  
+  .rf-modal.rf-show & {
+    transform: none;
+  }
+}
+
+.rf-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: get-color('white');
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: $modal-inner-border-radius;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+  outline: 0;
+}
+
+// === HEADER ===
+.rf-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $modal-header-padding-y $modal-header-padding-x;
+  border-bottom: $modal-header-border-width solid $modal-header-border-color;
+  border-top-left-radius: $modal-inner-border-radius;
+  border-top-right-radius: $modal-inner-border-radius;
+  
+  .rf-modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+}
+
+// === BODY ===
+.rf-modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+// === FOOTER ===
+.rf-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $modal-footer-padding-y $modal-footer-padding-x;
+  border-top: $modal-footer-border-width solid $modal-footer-border-color;
+  border-bottom-right-radius: $modal-inner-border-radius;
+  border-bottom-left-radius: $modal-inner-border-radius;
+  
+  > * {
+    margin: 0.25rem;
+  }
+}
+
+// === CLOSE BUTTON ===
+.rf-modal-close {
+  // TOUTES les propriétés CSS AVANT le mixin
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1051;
+  padding: 0.25rem;
+  background: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: get-color('dark');
+  text-shadow: 0 1px 0 get-color('white');
+  opacity: 0.5;
+  
+  // Ensuite les propriétés du mixin (qui peuvent contenir des nested rules)
+  @include button-base;
+  
+  // Puis les autres nested rules
+  &:hover,
+  &:focus {
+    color: get-color('dark');
+    text-decoration: none;
+    opacity: 0.75;
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+  
+  &::before {
+    content: "×";
+    speak: none;
+  }
+  
+  .rf-sr-only {
+    position: absolute !important;
+  }
+}
+
+// === VARIANTS ===
+.rf-modal-lg {
+  .rf-modal-dialog {
+    @include breakpoint(lg) {
+      max-width: 800px;
+    }
+  }
+}
+
+.rf-modal-sm {
+  .rf-modal-dialog {
+    @include breakpoint(sm) {
+      max-width: 300px;
+    }
+  }
+}
+
+.rf-modal-xl {
+  .rf-modal-dialog {
+    @include breakpoint(xl) {
+      max-width: 1140px;
+    }
+  }
+}
+
+// === CENTRÉ VERTICALEMENT ===
+.rf-modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+  
+  @include breakpoint(sm) {
+    min-height: calc(100% - 3.5rem);
+  }
+}
+
+// === MODAL SCROLLABLE ===
+.rf-modal-dialog-scrollable {
+  max-height: calc(100% - 1rem);
+  
+  @include breakpoint(sm) {
+    max-height: calc(100% - 3.5rem);
+  }
+  
+  .rf-modal-content {
+    max-height: calc(100vh - 1rem);
+    overflow: hidden;
+    
+    @include breakpoint(sm) {
+      max-height: calc(100vh - 3.5rem);
+    }
+  }
+  
+  .rf-modal-body {
+    overflow-y: auto;
+  }
+}

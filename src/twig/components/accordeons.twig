@@ -1,0 +1,275 @@
+<!-- components/accordeons.twig -->
+<section id="accordeons" class="rf-section">
+    <h2>Accordéons accessibles</h2>
+    <p>Panneaux pliants avec navigation clavier complète et gestion ARIA appropriée.</p>
+    
+    <h3>Accordéon basique</h3>
+    <div class="rf-example">
+        <div class="rf-accordion">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Qu'est-ce que le RGAA ?
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Le <strong>Référentiel Général d'Amélioration de l'Accessibilité (RGAA)</strong> est un guide français qui définit les règles d'accessibilité numérique.</p>
+                        <p>Il s'appuie sur les standards internationaux WCAG 2.1 et garantit que les sites web sont accessibles à tous les utilisateurs, y compris ceux utilisant des technologies d'assistance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Pourquoi l'accessibilité est-elle importante ?
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>L'accessibilité numérique profite à tous :</p>
+                        <ul>
+                            <li><strong>Inclusion :</strong> Permet l'accès aux personnes en situation de handicap</li>
+                            <li><strong>Qualité :</strong> Améliore l'expérience utilisateur pour tous</li>
+                            <li><strong>SEO :</strong> Améliore le référencement naturel</li>
+                            <li><strong>Légal :</strong> Respecte les obligations légales</li>
+                            <li><strong>Économique :</strong> Élargit l'audience potentielle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Comment utiliser ce framework ?
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>L'utilisation du framework RGAA est simple :</p>
+                        <ol>
+                            <li>Incluez les fichiers CSS et JS dans votre page</li>
+                            <li>Utilisez les classes CSS préfixées <code>.rf-</code></li>
+                            <li>Respectez la structure HTML recommandée</li>
+                            <li>Testez avec les outils d'accessibilité</li>
+                        </ol>
+                        <p>Tous les composants sont accessibles par défaut et respectent les critères RGAA 4.1.2.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Accordéon avec panneau ouvert par défaut</h3>
+    <div class="rf-example">
+        <div class="rf-accordion">
+            <div class="rf-accordion-item" data-rf-open>
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button" type="button">
+                        Section ouverte par défaut
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse rf-show">
+                    <div class="rf-accordion-body">
+                        <p>Ce panneau est ouvert par défaut grâce à l'attribut <code>data-rf-open</code> sur l'item.</p>
+                        <p>Cela permet de mettre en évidence du contenu important dès le chargement de la page.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Section fermée
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Cette section est fermée par défaut et peut être ouverte en cliquant sur l'en-tête.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Accordéon permettant plusieurs panneaux ouverts</h3>
+    <div class="rf-example">
+        <div class="rf-accordion" data-rf-allow-multiple="true" data-rf-close-others="false">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Navigation clavier
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Utilisez les touches suivantes pour naviguer :</p>
+                        <ul>
+                            <li><kbd>Tab</kbd> : Accéder aux en-têtes d'accordéon</li>
+                            <li><kbd>Flèches haut/bas</kbd> : Naviguer entre les en-têtes</li>
+                            <li><kbd>Entrée</kbd> ou <kbd>Espace</kbd> : Ouvrir/fermer un panneau</li>
+                            <li><kbd>Home</kbd> : Aller au premier en-tête</li>
+                            <li><kbd>End</kbd> : Aller au dernier en-tête</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Support des lecteurs d'écran
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Les accordéons utilisent les attributs ARIA appropriés :</p>
+                        <ul>
+                            <li><code>aria-expanded</code> : Indique si le panneau est ouvert</li>
+                            <li><code>aria-controls</code> : Associe l'en-tête au contenu</li>
+                            <li><code>aria-labelledby</code> : Associe le contenu à son titre</li>
+                        </ul>
+                        <p>Les changements d'état sont automatiquement annoncés aux utilisateurs de lecteurs d'écran.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Animations respectueuses
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Les animations d'ouverture/fermeture respectent les préférences utilisateur :</p>
+                        <ul>
+                            <li>Transition fluide par défaut</li>
+                            <li>Désactivation automatique si <code>prefers-reduced-motion</code></li>
+                            <li>Durée raisonnable (350ms)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Accordéon sans bordures (flush)</h3>
+    <div class="rf-example">
+        <div class="rf-accordion rf-accordion-flush">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Question fréquente 1
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Réponse à la première question fréquemment posée par les utilisateurs.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Question fréquente 2
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Réponse détaillée à la seconde question avec des informations complémentaires.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Accordéons colorés</h3>
+    <div class="rf-example">
+        <div class="rf-accordion rf-accordion-primary">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Accordéon primaire
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Accordéon avec couleur primaire pour mettre en évidence du contenu important.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rf-accordion rf-accordion-success" style="margin-top: 1rem;">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Accordéon de succès
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Accordéon vert pour indiquer des informations positives ou de succès.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rf-accordion rf-accordion-warning" style="margin-top: 1rem;">
+            <div class="rf-accordion-item">
+                <h3 class="rf-accordion-header">
+                    <button class="rf-accordion-button rf-collapsed" type="button">
+                        Accordéon d'avertissement
+                    </button>
+                </h3>
+                <div class="rf-accordion-collapse">
+                    <div class="rf-accordion-body">
+                        <p>Accordéon orange pour signaler des informations importantes à retenir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Navigation clavier complète avec flèches directionnelles</li>
+            <li>Attributs ARIA appropriés : <code>aria-expanded</code>, <code>aria-controls</code></li>
+            <li>Annonces automatiques aux lecteurs d'écran</li>
+            <li>Focus visible sur tous les en-têtes</li>
+            <li>Support du mode multiple ou exclusif</li>
+            <li>Animations respectueuses (<code>prefers-reduced-motion</code>)</li>
+            <li>Structure sémantique avec titres de niveaux appropriés</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;div class="rf-accordion"&gt;
+    &lt;div class="rf-accordion-item"&gt;
+        &lt;h3 class="rf-accordion-header"&gt;
+            &lt;button class="rf-accordion-button rf-collapsed" type="button"&gt;
+                Titre du panneau
+            &lt;/button&gt;
+        &lt;/h3&gt;
+        &lt;div class="rf-accordion-collapse"&gt;
+            &lt;div class="rf-accordion-body"&gt;
+                &lt;p&gt;Contenu du panneau...&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Options disponibles --&gt;
+&lt;div class="rf-accordion" 
+     data-rf-allow-multiple="true" 
+     data-rf-close-others="false"&gt;
+    &lt;!-- Items... --&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</section>

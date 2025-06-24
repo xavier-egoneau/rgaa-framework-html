@@ -1,0 +1,96 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}RGAA Framework - Documentation{% endblock %}
+
+{% block content %}
+<section id="introduction">
+    <h2>Introduction</h2>
+    <p>Bienvenue dans la documentation du RGAA Framework !</p>
+    
+    <div class="rf-alert rf-alert-info">
+        <strong>Objectif :</strong> Fournir des composants web entièrement accessibles dès la conception.
+    </div>
+</section>
+
+<section id="grille">
+    <h2>Système de grille</h2>
+    
+    <div class="rf-row">
+        <div class="rf-col-md-6">
+            <h3>Responsive mobile-first</h3>
+            <p>Grille flexible basée sur Flexbox.</p>
+        </div>
+        <div class="rf-col-md-6">
+            <h3>Classes utilitaires</h3>
+            <p>Justification et alignement inclus.</p>
+        </div>
+    </div>
+</section>
+
+<section id="composants">
+    <h2>Composants</h2>
+    
+    <h3>Modale de démonstration</h3>
+    <button type="button" 
+            class="rf-btn rf-btn-primary" 
+            data-rf-modal-trigger="#demo-modal">
+        Ouvrir la modale
+    </button>
+    
+    <dialog id="demo-modal" class="rf-modal rf-fade">
+        <div class="rf-modal-dialog">
+            <div class="rf-modal-content">
+                <div class="rf-modal-header">
+                    <h4 class="rf-modal-title">Modale de test</h4>
+                    <button type="button" class="rf-modal-close" data-rf-modal-close>
+                        <span class="rf-sr-only">Fermer</span>
+                    </button>
+                </div>
+                <div class="rf-modal-body">
+                    <p>Cette modale respecte toutes les règles RGAA :</p>
+                    <ul>
+                        <li>Focus piégé automatiquement</li>
+                        <li>Fermeture avec Échap</li>
+                        <li>Retour du focus sur le déclencheur</li>
+                        <li>Annonces aux lecteurs d'écran</li>
+                    </ul>
+                    
+                    <div class="rf-form-group">
+                        <label for="modal-input" class="rf-form-label">Test du focus</label>
+                        <input type="text" id="modal-input" class="rf-form-control" 
+                               placeholder="Testez la navigation au clavier">
+                    </div>
+                </div>
+                <div class="rf-modal-footer">
+                    <button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close>
+                        Annuler
+                    </button>
+                    <button type="button" class="rf-btn rf-btn-primary">
+                        Confirmer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <h3>Formulaire avec validation</h3>
+    <form data-rf-validate class="rf-form-demo">
+        <div class="rf-form-group">
+            <label for="demo-email" class="rf-form-label">
+                E-mail <span class="rf-required">obligatoire</span>
+            </label>
+            <input type="email" id="demo-email" class="rf-form-control" required>
+        </div>
+        
+        <div class="rf-form-group">
+            <label for="demo-password" class="rf-form-label">
+                Mot de passe <span class="rf-required">obligatoire</span>
+            </label>
+            <input type="password" id="demo-password" class="rf-form-control" 
+                   required minlength="8">
+        </div>
+        
+        <button type="submit" class="rf-btn rf-btn-primary">Valider</button>
+    </form>
+</section>
+{% endblock %}

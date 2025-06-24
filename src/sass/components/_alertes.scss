@@ -1,0 +1,355 @@
+// components/_alertes.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === VARIABLES ALERTES ===
+$alert-padding-y: 0.75rem !default;
+$alert-padding-x: 1rem !default;
+$alert-margin-bottom: 1rem !default;
+$alert-border-radius: 0.25rem !default;
+$alert-border-width: 1px !default;
+
+// === ALERTE DE BASE ===
+.rf-alert {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  border: $alert-border-width solid transparent;
+  border-radius: $alert-border-radius;
+  
+  // Améliore la lisibilité
+  line-height: $line-height-base;
+  
+  // Liens dans les alertes
+  a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 600;
+    
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  
+  // Titres dans les alertes
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: inherit;
+  }
+  
+  // Paragraphes
+  p {
+    margin-bottom: 0;
+    
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // Listes
+  ul, ol {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+  }
+}
+
+// === MIXIN POUR VARIANTES ===
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  
+  // Assure un contraste suffisant
+  @include ensure-contrast($background, $color);
+  
+  // Liens dans cette variante
+  a {
+    color: darken-color($color, 10%);
+    
+    &:hover,
+    &:focus {
+      color: darken-color($color, 20%);
+    }
+  }
+}
+
+// === VARIANTES D'ALERTES ===
+
+// Alertes primaires
+.rf-alert-primary {
+  @include alert-variant(
+    lighten-color(get-color('primary'), 35%),
+    lighten-color(get-color('primary'), 25%), 
+    darken-color(get-color('primary'), 20%)
+  );
+}
+
+// Alertes secondaires  
+.rf-alert-secondary {
+  @include alert-variant(
+    lighten-color(get-color('secondary'), 35%),
+    lighten-color(get-color('secondary'), 25%), 
+    darken-color(get-color('secondary'), 20%)
+  );
+}
+
+// Alertes de succès
+.rf-alert-success {
+  @include alert-variant(
+    lighten-color(get-color('success'), 35%),
+    lighten-color(get-color('success'), 25%), 
+    darken-color(get-color('success'), 20%)
+  );
+}
+
+// Alertes de danger
+.rf-alert-danger {
+  @include alert-variant(
+    lighten-color(get-color('danger'), 35%),
+    lighten-color(get-color('danger'), 25%), 
+    darken-color(get-color('danger'), 20%)
+  );
+}
+
+// Alertes d'avertissement
+.rf-alert-warning {
+  @include alert-variant(
+    lighten-color(get-color('warning'), 35%),
+    lighten-color(get-color('warning'), 25%), 
+    darken-color(get-color('warning'), 30%)
+  );
+}
+
+// Alertes d'information
+.rf-alert-info {
+  @include alert-variant(
+    lighten-color(get-color('info'), 35%),
+    lighten-color(get-color('info'), 25%), 
+    darken-color(get-color('info'), 30%)
+  );
+}
+
+// === ALERTES AVEC ICÔNE ===
+.rf-alert-with-icon {
+  display: flex;
+  align-items: flex-start;
+  
+  .rf-alert-icon {
+    flex-shrink: 0;
+    margin-right: 0.75rem;
+    font-size: 1.2em;
+    
+    // Assure que l'icône est décorative
+    &[aria-hidden="true"] {
+      user-select: none;
+    }
+  }
+  
+  .rf-alert-content {
+    flex: 1;
+  }
+}
+
+// === ALERTES DISMISSIBLES ===
+.rf-alert-dismissible {
+  padding-right: 3rem;
+  
+  .rf-alert-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: $alert-padding-y $alert-padding-x;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font-size: 1.2em;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    @include transition(opacity, 0.15s, ease-in-out);
+    
+    &:hover,
+    &:focus {
+      opacity: 1;
+      text-decoration: none;
+    }
+    
+    &:focus {
+      @include focus-ring();
+      outline-offset: -2px;
+    }
+    
+    // Contenu du bouton fermer
+    &::before {
+      content: "×";
+      font-weight: bold;
+    }
+  }
+}
+
+// === ALERTES AVEC ACTIONS ===
+.rf-alert-actions {
+  margin-top: 0.75rem;
+  
+  .rf-btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// === ANIMATION D'APPARITION ===
+.rf-alert {
+  @include fade-in(0.3s);
+  
+  // Animation de disparition
+  &.rf-fade-out {
+    opacity: 0;
+    @include transition(opacity, 0.3s, ease-out);
+  }
+}
+
+// === ALERTES COMPACTES ===
+.rf-alert-sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.rf-alert-lg {
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem;
+}
+
+// === ALERTES EN TOAST (floating) ===
+.rf-alert-toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1060;
+  min-width: 300px;
+  max-width: 500px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  margin-bottom: 0;
+  
+  @include mobile-only {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+}
+
+// === CONTENEUR POUR TOASTS ===
+.rf-alert-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1060;
+  max-width: 500px;
+  
+  @include mobile-only {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+  
+  .rf-alert {
+    margin-bottom: 0.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// === ALERTES AVEC PROGRESS BAR ===
+.rf-alert-progress {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: currentColor;
+    opacity: 0.3;
+    animation: alert-progress linear;
+  }
+  
+  &[data-auto-close-delay="3000"]::after {
+    animation-duration: 3s;
+  }
+  
+  &[data-auto-close-delay="5000"]::after {
+    animation-duration: 5s;
+  }
+  
+  &[data-auto-close-delay="10000"]::after {
+    animation-duration: 10s;
+  }
+}
+
+@keyframes alert-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+// === ALERTES AVEC BADGES ===
+.rf-alert-badge {
+  .rf-badge {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+}
+
+// === RESPONSIVE ===
+@include mobile-only {
+  .rf-alert {
+    padding: 0.75rem;
+    border-radius: 0;
+    
+    &.rf-alert-dismissible {
+      padding-right: 2.5rem;
+    }
+  }
+  
+  .rf-alert-actions {
+    .rf-btn {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// === PRINT ===
+@media print {
+  .rf-alert-dismissible .rf-alert-close,
+  .rf-alert-toast {
+    display: none !important;
+  }
+  
+  .rf-alert {
+    border: 1px solid #000 !important;
+    background: transparent !important;
+    color: #000 !important;
+    page-break-inside: avoid;
+  }
+}

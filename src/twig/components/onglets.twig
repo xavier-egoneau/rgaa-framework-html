@@ -1,0 +1,323 @@
+<!-- components/onglets.twig -->
+<section id="onglets" class="rf-section">
+    <h2>Onglets accessibles</h2>
+    <p>Système d'onglets avec navigation clavier complète et gestion ARIA appropriée.</p>
+    
+    <h3>Onglets de base</h3>
+    <div class="rf-example">
+        <div class="rf-tabs">
+            <ul class="rf-tab-list" role="tablist">
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link rf-active" href="#home" role="tab" aria-selected="true">
+                        Accueil
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#profile" role="tab" aria-selected="false">
+                        Profil
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#contact" role="tab" aria-selected="false">
+                        Contact
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link rf-disabled" href="#disabled" role="tab" aria-disabled="true">
+                        Désactivé
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="rf-tab-content">
+                <div class="rf-tab-pane rf-active rf-show" id="home" role="tabpanel">
+                    <h3>Bienvenue sur la page d'accueil</h3>
+                    <p>Cette section contient les informations principales de votre tableau de bord.</p>
+                    <p>Vous pouvez naviguer entre les onglets en utilisant :</p>
+                    <ul>
+                        <li><kbd>Tab</kbd> pour accéder aux onglets</li>
+                        <li><kbd>Flèches gauche/droite</kbd> pour naviguer entre les onglets</li>
+                        <li><kbd>Entrée</kbd> ou <kbd>Espace</kbd> pour activer un onglet</li>
+                        <li><kbd>Home</kbd>/<kbd>End</kbd> pour aller au premier/dernier onglet</li>
+                    </ul>
+                </div>
+                
+                <div class="rf-tab-pane" id="profile" role="tabpanel">
+                    <h3>Informations du profil</h3>
+                    <p>Gérez vos informations personnelles et paramètres de compte.</p>
+                    <div class="rf-form-group">
+                        <label for="profile-name" class="rf-form-label">Nom complet</label>
+                        <input type="text" id="profile-name" class="rf-form-control" value="Jean Dupont">
+                    </div>
+                    <div class="rf-form-group">
+                        <label for="profile-email" class="rf-form-label">E-mail</label>
+                        <input type="email" id="profile-email" class="rf-form-control" value="jean.dupont@exemple.com">
+                    </div>
+                    <button type="button" class="rf-btn rf-btn-primary">Sauvegarder</button>
+                </div>
+                
+                <div class="rf-tab-pane" id="contact" role="tabpanel">
+                    <h3>Nous contacter</h3>
+                    <p>Plusieurs moyens pour nous joindre selon vos besoins.</p>
+                    <div class="rf-row">
+                        <div class="rf-col-md-6">
+                            <h4>Support technique</h4>
+                            <p>Pour les questions techniques et bugs.</p>
+                            <p><strong>E-mail :</strong> support@exemple.com</p>
+                            <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
+                        </div>
+                        <div class="rf-col-md-6">
+                            <h4>Support commercial</h4>
+                            <p>Pour les questions de facturation et ventes.</p>
+                            <p><strong>E-mail :</strong> commercial@exemple.com</p>
+                            <p><strong>Téléphone :</strong> 01 23 45 67 90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Onglets en pilules</h3>
+    <div class="rf-example">
+        <div class="rf-tabs rf-tabs-pills">
+            <ul class="rf-tab-list" role="tablist">
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link rf-active" href="#pills-dashboard" role="tab">
+                        Tableau de bord
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#pills-analytics" role="tab">
+                        Analyses
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#pills-reports" role="tab">
+                        Rapports
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="rf-tab-content">
+                <div class="rf-tab-pane rf-active rf-show" id="pills-dashboard" role="tabpanel">
+                    <h3>Tableau de bord</h3>
+                    <p>Vue d'ensemble de vos métriques importantes.</p>
+                    <div class="rf-row">
+                        <div class="rf-col-md-4">
+                            <div class="rf-alert rf-alert-success">
+                                <strong>1,234</strong><br>
+                                Utilisateurs actifs
+                            </div>
+                        </div>
+                        <div class="rf-col-md-4">
+                            <div class="rf-alert rf-alert-info">
+                                <strong>89%</strong><br>
+                                Taux de satisfaction
+                            </div>
+                        </div>
+                        <div class="rf-col-md-4">
+                            <div class="rf-alert rf-alert-warning">
+                                <strong>42</strong><br>
+                                Tickets ouverts
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rf-tab-pane" id="pills-analytics" role="tabpanel">
+                    <h3>Analyses détaillées</h3>
+                    <p>Explorez vos données en profondeur avec nos outils d'analyse.</p>
+                    <p>Cette section permettrait d'afficher des graphiques et statistiques avancées.</p>
+                </div>
+                
+                <div class="rf-tab-pane" id="pills-reports" role="tabpanel">
+                    <h3>Rapports</h3>
+                    <p>Générez et consultez vos rapports personnalisés.</p>
+                    <button type="button" class="rf-btn rf-btn-primary">Nouveau rapport</button>
+                    <button type="button" class="rf-btn rf-btn-outline-secondary">Exporter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Onglets verticaux</h3>
+    <div class="rf-example">
+        <div class="rf-tabs rf-tabs-vertical">
+            <ul class="rf-tab-list" role="tablist">
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link rf-active" href="#vertical-settings" role="tab">
+                        Paramètres généraux
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#vertical-security" role="tab">
+                        Sécurité
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#vertical-notifications" role="tab">
+                        Notifications
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#vertical-privacy" role="tab">
+                        Confidentialité
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="rf-tab-content">
+                <div class="rf-tab-pane rf-active rf-show" id="vertical-settings" role="tabpanel">
+                    <h3>Paramètres généraux</h3>
+                    <div class="rf-form-group">
+                        <label for="general-language" class="rf-form-label">Langue</label>
+                        <select id="general-language" class="rf-form-select">
+                            <option>Français</option>
+                            <option>English</option>
+                            <option>Español</option>
+                        </select>
+                    </div>
+                    <div class="rf-form-group">
+                        <label for="general-timezone" class="rf-form-label">Fuseau horaire</label>
+                        <select id="general-timezone" class="rf-form-select">
+                            <option>Europe/Paris</option>
+                            <option>America/New_York</option>
+                            <option>Asia/Tokyo</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="rf-tab-pane" id="vertical-security" role="tabpanel">
+                    <h3>Paramètres de sécurité</h3>
+                    <div class="rf-form-check">
+                        <input type="checkbox" id="security-2fa" class="rf-form-check-input" checked>
+                        <label for="security-2fa" class="rf-form-check-label">
+                            Activer l'authentification à deux facteurs
+                        </label>
+                    </div>
+                    <div class="rf-form-check">
+                        <input type="checkbox" id="security-login-alerts" class="rf-form-check-input">
+                        <label for="security-login-alerts" class="rf-form-check-label">
+                            Recevoir des alertes lors des connexions
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="rf-tab-pane" id="vertical-notifications" role="tabpanel">
+                    <h3>Préférences de notification</h3>
+                    <div class="rf-form-check">
+                        <input type="checkbox" id="notif-email" class="rf-form-check-input" checked>
+                        <label for="notif-email" class="rf-form-check-label">
+                            Notifications par e-mail
+                        </label>
+                    </div>
+                    <div class="rf-form-check">
+                        <input type="checkbox" id="notif-browser" class="rf-form-check-input">
+                        <label for="notif-browser" class="rf-form-check-label">
+                            Notifications navigateur
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="rf-tab-pane" id="vertical-privacy" role="tabpanel">
+                    <h3>Paramètres de confidentialité</h3>
+                    <p>Contrôlez qui peut voir vos informations et activités.</p>
+                    <div class="rf-form-group">
+                        <label for="privacy-profile" class="rf-form-label">Visibilité du profil</label>
+                        <select id="privacy-profile" class="rf-form-select">
+                            <option>Public</option>
+                            <option>Amis uniquement</option>
+                            <option>Privé</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Onglets justifiés</h3>
+    <div class="rf-example">
+        <div class="rf-tabs rf-tabs-justified">
+            <ul class="rf-tab-list" role="tablist">
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link rf-active" href="#justified-overview" role="tab">
+                        Vue d'ensemble
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#justified-details" role="tab">
+                        Détails
+                    </a>
+                </li>
+                <li class="rf-tab-item">
+                    <a class="rf-tab-link" href="#justified-history" role="tab">
+                        Historique
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="rf-tab-content">
+                <div class="rf-tab-pane rf-active rf-show" id="justified-overview" role="tabpanel">
+                    <h3>Vue d'ensemble</h3>
+                    <p>Résumé des informations principales dans un format compact.</p>
+                </div>
+                
+                <div class="rf-tab-pane" id="justified-details" role="tabpanel">
+                    <h3>Informations détaillées</h3>
+                    <p>Toutes les informations techniques et spécifications complètes.</p>
+                </div>
+                
+                <div class="rf-tab-pane" id="justified-history" role="tabpanel">
+                    <h3>Historique des modifications</h3>
+                    <p>Journal chronologique de tous les changements effectués.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Navigation clavier complète avec flèches gauche/droite</li>
+            <li>Attributs ARIA appropriés : <code>role="tablist"</code>, <code>aria-selected</code></li>
+            <li>Focus management automatique entre onglets</li>
+            <li>Support des onglets désactivés</li>
+            <li>Annonces automatiques aux lecteurs d'écran</li>
+            <li>Structure sémantique avec rôles appropriés</li>
+            <li>Animations respectueuses (<code>prefers-reduced-motion</code>)</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;div class="rf-tabs"&gt;
+    &lt;ul class="rf-tab-list" role="tablist"&gt;
+        &lt;li class="rf-tab-item"&gt;
+            &lt;a class="rf-tab-link rf-active" href="#tab1" role="tab"&gt;
+                Onglet 1
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="rf-tab-item"&gt;
+            &lt;a class="rf-tab-link" href="#tab2" role="tab"&gt;
+                Onglet 2
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;div class="rf-tab-content"&gt;
+        &lt;div class="rf-tab-pane rf-active rf-show" id="tab1" role="tabpanel"&gt;
+            &lt;p&gt;Contenu de l'onglet 1...&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="rf-tab-pane" id="tab2" role="tabpanel"&gt;
+            &lt;p&gt;Contenu de l'onglet 2...&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Variantes disponibles --&gt;
+&lt;div class="rf-tabs rf-tabs-pills"&gt;...&lt;/div&gt;
+&lt;div class="rf-tabs rf-tabs-vertical"&gt;...&lt;/div&gt;
+&lt;div class="rf-tabs rf-tabs-justified"&gt;...&lt;/div&gt;</code></pre>
+    </div>
+</section>

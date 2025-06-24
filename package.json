@@ -1,0 +1,35 @@
+{
+    "type": "module",
+    "name": "rgaa-framework",
+    "version": "1.0.0",
+    "description": "Framework CSS/JS accessible et conforme RGAA 4.1.2",
+    "dependencies": {
+        "@babel/core": "^7.25.2",
+        "@babel/preset-env": "^7.25.2",
+        "express-validator": "^7.2.0",
+        "gulp": "^5.0.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^4.1.0",
+        "gulp-jsbeautifier": "^3.0.1",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify": "^3.0.2",
+        "node-fetch": "^2.7.0",
+        "through2": "^4.0.2"
+    },
+    "devDependencies": {
+        "gulp-livereload": "^4.0.2",
+        "gulp-twig": "^1.2.0",
+        "sass": "^1.87.0"
+    },
+    "scripts": {
+        "dev": "gulp dev",
+        "build": "gulp build",
+        "test": "gulp test",
+        "watch": "gulp watch",
+        "build-css": "gulp css",
+        "build-js": "gulp javascript",
+        "build-images": "gulp images"
+    }
+}

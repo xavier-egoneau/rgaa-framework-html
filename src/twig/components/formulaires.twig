@@ -1,0 +1,214 @@
+<!-- components/formulaires.twig -->
+<section id="formulaires" class="rf-section">
+    <h2>Formulaires avec validation</h2>
+    <p>Formulaires entièrement accessibles avec validation temps réel et messages d'erreur.</p>
+    
+    <h3>Formulaire complet avec validation</h3>
+    <div class="rf-example">
+        <form data-rf-validate class="rf-form-demo">
+            <div class="rf-form-group">
+                <label for="demo-nom" class="rf-form-label">
+                    Nom complet <span class="rf-required">obligatoire</span>
+                </label>
+                <input type="text" 
+                       id="demo-nom" 
+                       class="rf-form-control" 
+                       required 
+                       aria-describedby="demo-nom-error">
+                <div id="demo-nom-error" class="rf-invalid-feedback"></div>
+            </div>
+    
+    <h3>Input groups</h3>
+    <div class="rf-example">
+        <div class="rf-input-group" style="margin-bottom: 1rem;">
+            <span class="rf-input-group-text">@</span>
+            <input type="text" class="rf-form-control" placeholder="Nom d'utilisateur">
+        </div>
+        
+        <div class="rf-input-group" style="margin-bottom: 1rem;">
+            <input type="text" class="rf-form-control" placeholder="Rechercher sur le site...">
+            <button class="rf-btn rf-btn-primary" type="button">
+                <span aria-hidden="true">🔍</span>
+                <span class="rf-sr-only">Lancer la recherche</span>
+            </button>
+        </div>
+        
+        <div class="rf-input-group">
+            <span class="rf-input-group-text">€</span>
+            <input type="number" class="rf-form-control" placeholder="Montant">
+            <span class="rf-input-group-text">.00</span>
+        </div>
+    </div>
+    
+    <h3>Floating labels</h3>
+    <div class="rf-example">
+        <div class="rf-form-floating" style="margin-bottom: 1rem;">
+            <input type="email" 
+                   id="floatingEmail" 
+                   class="rf-form-control" 
+                   placeholder="nom@exemple.com">
+            <label for="floatingEmail">Adresse e-mail</label>
+        </div>
+        
+        <div class="rf-form-floating">
+            <select id="floatingSelect" class="rf-form-select">
+                <option selected>Choisir...</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label for="floatingSelect">Sélection</label>
+        </div>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Labels associés à tous les champs (<code>for</code> et <code>id</code>)</li>
+            <li>Validation en temps réel avec messages d'erreur</li>
+            <li>Attributs ARIA : <code>aria-required</code>, <code>aria-invalid</code>, <code>aria-describedby</code></li>
+            <li>Focus automatique sur première erreur</li>
+            <li>Annonces aux lecteurs d'écran</li>
+            <li>Navigation clavier dans les groupes radio</li>
+            <li>Fieldsets avec légendes pour groupes de champs</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;form data-rf-validate&gt;
+    &lt;div class="rf-form-group"&gt;
+        &lt;label for="email" class="rf-form-label"&gt;
+            E-mail &lt;span class="rf-required"&gt;obligatoire&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input type="email" 
+               id="email" 
+               class="rf-form-control" 
+               required 
+               aria-describedby="email-error"&gt;
+        &lt;div id="email-error" class="rf-invalid-feedback"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;fieldset&gt;
+        &lt;legend&gt;Options&lt;/legend&gt;
+        &lt;div class="rf-form-check"&gt;
+            &lt;input type="radio" name="option" id="opt1" class="rf-form-check-input"&gt;
+            &lt;label for="opt1" class="rf-form-check-label"&gt;Option 1&lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    
+    &lt;button type="submit" class="rf-btn rf-btn-primary"&gt;Valider&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+</section>
+            
+            <div class="rf-form-group">
+                <label for="demo-email-form" class="rf-form-label">
+                    E-mail <span class="rf-required">obligatoire</span>
+                </label>
+                <input type="email" 
+                       id="demo-email-form" 
+                       class="rf-form-control" 
+                       required 
+                       aria-describedby="demo-email-form-error">
+                <div id="demo-email-form-error" class="rf-invalid-feedback"></div>
+            </div>
+            
+            <div class="rf-form-group">
+                <label for="demo-telephone" class="rf-form-label">Téléphone</label>
+                <input type="tel" 
+                       id="demo-telephone" 
+                       class="rf-form-control" 
+                       pattern="^0[1-9](?:[0-9]{8})$"
+                       placeholder="0123456789"
+                       aria-describedby="demo-telephone-help">
+                <div id="demo-telephone-help" class="rf-form-text">
+                    Format : 10 chiffres commençant par 0
+                </div>
+            </div>
+            
+            <div class="rf-form-group">
+                <label for="demo-password-form" class="rf-form-label">
+                    Mot de passe <span class="rf-required">obligatoire</span>
+                </label>
+                <input type="password" 
+                       id="demo-password-form" 
+                       class="rf-form-control" 
+                       required 
+                       minlength="8"
+                       aria-describedby="demo-password-form-help">
+                <div id="demo-password-form-help" class="rf-form-text">
+                    Minimum 8 caractères
+                </div>
+            </div>
+            
+            <div class="rf-form-group">
+                <label for="demo-pays" class="rf-form-label">Pays</label>
+                <select id="demo-pays" class="rf-form-select">
+                    <option value="">Choisir un pays</option>
+                    <option value="fr">France</option>
+                    <option value="be">Belgique</option>
+                    <option value="ch">Suisse</option>
+                    <option value="ca">Canada</option>
+                </select>
+            </div>
+            
+            <div class="rf-form-group">
+                <label for="demo-message" class="rf-form-label">Message</label>
+                <textarea id="demo-message" 
+                          class="rf-form-control rf-textarea" 
+                          rows="4" 
+                          placeholder="Votre message..."></textarea>
+            </div>
+            
+            <button type="submit" class="rf-btn rf-btn-primary">Valider le formulaire</button>
+            <button type="reset" class="rf-btn rf-btn-secondary">Réinitialiser</button>
+        </form>
+    </div>
+    
+    <h3>Checkboxes et radios</h3>
+    <div class="rf-example">
+        <fieldset>
+            <legend>Préférences de contact</legend>
+            
+            <div class="rf-form-check">
+                <input type="checkbox" id="newsletter" class="rf-form-check-input">
+                <label for="newsletter" class="rf-form-check-label">
+                    Recevoir la newsletter hebdomadaire
+                </label>
+            </div>
+            
+            <div class="rf-form-check">
+                <input type="checkbox" id="sms" class="rf-form-check-input">
+                <label for="sms" class="rf-form-check-label">
+                    Recevoir les alertes SMS
+                </label>
+            </div>
+            
+            <div class="rf-form-check">
+                <input type="checkbox" id="appels" class="rf-form-check-input" disabled>
+                <label for="appels" class="rf-form-check-label">
+                    Recevoir des appels (option indisponible)
+                </label>
+            </div>
+        </fieldset>
+        
+        <fieldset style="margin-top: 2rem;">
+            <legend>Genre <span class="rf-required">obligatoire</span></legend>
+            
+            <div class="rf-form-check">
+                <input type="radio" name="genre" id="homme" class="rf-form-check-input" value="homme">
+                <label for="homme" class="rf-form-check-label">Homme</label>
+            </div>
+            
+            <div class="rf-form-check">
+                <input type="radio" name="genre" id="femme" class="rf-form-check-input" value="femme">
+                <label for="femme" class="rf-form-check-label">Femme</label>
+            </div>
+            
+            <div class="rf-form-check">
+                <input type="radio" name="genre" id="autre" class="rf-form-check-input" value="autre">
+                <label for="autre" class="rf-form-check-label">Autre / Non précisé</label>
+            </div>
+        </fieldset>
+    </div>

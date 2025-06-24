@@ -1,0 +1,292 @@
+// components/_onglets.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === VARIABLES ONGLETS ===
+$tabs-border-color: get-color('light') !default;
+$tabs-border-width: 1px !default;
+$tabs-link-padding-y: 0.75rem !default;
+$tabs-link-padding-x: 1rem !default;
+$tabs-link-color: get-color('secondary') !default;
+$tabs-link-hover-color: get-color('primary') !default;
+$tabs-link-active-color: get-color('primary') !default;
+$tabs-link-active-bg: get-color('white') !default;
+$tabs-link-disabled-color: lighten-color(get-color('secondary'), 20%) !default;
+$tabs-content-padding: 1.5rem !default;
+$tabs-content-bg: get-color('white') !default;
+
+// === CONTENEUR ONGLETS ===
+.rf-tabs {
+  // Assure un contexte pour les onglets
+  isolation: isolate;
+}
+
+// === LISTE DES ONGLETS ===
+.rf-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: $tabs-border-width solid $tabs-border-color;
+  background-color: transparent;
+  
+  // Navigation au clavier uniquement
+  &:focus {
+    outline: none;
+  }
+}
+
+// === ITEM ONGLET ===
+.rf-tab-item {
+  margin-bottom: -$tabs-border-width;
+  
+  // Premier et dernier onglet
+  &:first-child .rf-tab-link {
+    border-top-left-radius: 0.25rem;
+  }
+  
+  &:last-child .rf-tab-link {
+    border-top-right-radius: 0.25rem;
+  }
+}
+
+// === LIEN ONGLET ===
+.rf-tab-link {
+  display: block;
+  padding: $tabs-link-padding-y $tabs-link-padding-x;
+  color: $tabs-link-color;
+  text-decoration: none;
+  background-color: transparent;
+  border: $tabs-border-width solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  cursor: pointer;
+  user-select: none;
+  @include transition(all, 0.15s, ease-in-out);
+  
+  // États hover et focus
+  &:hover {
+    color: $tabs-link-hover-color;
+    text-decoration: none;
+    border-color: $tabs-border-color $tabs-border-color transparent;
+    isolation: isolate;
+  }
+  
+  &:focus {
+    @include focus-ring();
+    outline-offset: -2px;
+    z-index: 3;
+  }
+  
+  // Onglet actif
+  &.rf-active,
+  &[aria-selected="true"] {
+    color: $tabs-link-active-color;
+    background-color: $tabs-link-active-bg;
+    border-color: $tabs-border-color $tabs-border-color transparent;
+    font-weight: 600;
+    z-index: 2;
+    
+    &:hover {
+      color: $tabs-link-active-color;
+      border-color: $tabs-border-color $tabs-border-color transparent;
+    }
+  }
+  
+  // Onglet désactivé
+  &.rf-disabled,
+  &[aria-disabled="true"] {
+    color: $tabs-link-disabled-color;
+    pointer-events: none;
+    cursor: not-allowed;
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+// === CONTENU DES ONGLETS ===
+.rf-tab-content {
+  // Conteneur global des panneaux
+  position: relative;
+}
+
+.rf-tab-pane {
+  display: none;
+  padding: $tabs-content-padding;
+  background-color: $tabs-content-bg;
+  border: $tabs-border-width solid $tabs-border-color;
+  border-top: 0;
+  
+  // Panneau actif
+  &.rf-active,
+  &.rf-show {
+    display: block;
+  }
+  
+  // Animation d'apparition
+  &.rf-fade {
+    opacity: 0;
+    @include transition(opacity, 0.15s, linear);
+    
+    &.rf-show {
+      opacity: 1;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      
+      &.rf-show {
+        opacity: 1;
+      }
+    }
+  }
+  
+  // Premier et dernier contenu
+  > *:first-child {
+    margin-top: 0;
+  }
+  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// === VARIANTES D'ONGLETS ===
+
+// Onglets pilules
+.rf-tabs-pills {
+  .rf-tab-list {
+    border-bottom: 0;
+    gap: 0.25rem;
+  }
+  
+  .rf-tab-item {
+    margin-bottom: 0;
+  }
+  
+  .rf-tab-link {
+    border-radius: 2rem;
+    border: $tabs-border-width solid transparent;
+    
+    &:hover {
+      background-color: lighten-color($tabs-link-hover-color, 45%);
+      border-color: transparent;
+    }
+    
+    &.rf-active,
+    &[aria-selected="true"] {
+      color: get-color('white');
+      background-color: $tabs-link-active-color;
+      border-color: $tabs-link-active-color;
+      
+      &:hover {
+        background-color: darken-color($tabs-link-active-color, 7%);
+        border-color: darken-color($tabs-link-active-color, 7%);
+      }
+    }
+  }
+  
+  .rf-tab-content {
+    margin-top: 1rem;
+  }
+  
+  .rf-tab-pane {
+    border: 0;
+    padding: 0;
+  }
+}
+
+// Onglets verticaux
+.rf-tabs-vertical {
+  display: flex;
+  gap: 0;
+  
+  .rf-tab-list {
+    flex-direction: column;
+    width: 25%;
+    min-width: 200px;
+    border-bottom: 0;
+    border-right: $tabs-border-width solid $tabs-border-color;
+  }
+  
+  .rf-tab-item {
+    margin-bottom: 0;
+    margin-right: -$tabs-border-width;
+    
+    &:first-child .rf-tab-link {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0;
+    }
+    
+    &:last-child .rf-tab-link {
+      border-bottom-left-radius: 0.25rem;
+      border-top-right-radius: 0;
+    }
+  }
+  
+  .rf-tab-link {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.25rem;
+    text-align: left;
+    
+    &:hover {
+      border-color: $tabs-border-color transparent $tabs-border-color $tabs-border-color;
+    }
+    
+    &.rf-active,
+    &[aria-selected="true"] {
+      border-color: $tabs-border-color transparent $tabs-border-color $tabs-border-color;
+    }
+  }
+  
+  .rf-tab-content {
+    flex: 1;
+  }
+  
+  .rf-tab-pane {
+    border-left: 0;
+    border-top: $tabs-border-width solid $tabs-border-color;
+  }
+}
+
+// === ONGLETS JUSTIFIÉS ===
+.rf-tabs-justified {
+  .rf-tab-list {
+    width: 100%;
+  }
+  
+  .rf-tab-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .rf-tab-link {
+    width: 100%;
+  }
+}
+
+// === ONGLETS COMPACTS ===
+.rf-tabs-sm {
+  .rf-tab-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .rf-tab-pane {
+    padding: 1rem;
+  }
+}
+
+.rf-tabs-lg {
+  .rf-tab-link {
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+  }
+  
+  .rf-tab-pane {
+    padding: 2rem;
+  }
+}

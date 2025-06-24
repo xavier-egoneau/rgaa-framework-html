@@ -1,0 +1,54 @@
+// utilities/_skip-links.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;
+
+// === LIENS D'ÉVITEMENT ===
+.rf-skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  
+  &__link {
+    @include sr-only;
+    @include sr-only-focusable;
+    
+    // Style au focus
+    &:focus,
+    &:active {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      padding: 0.5rem 1rem;
+      background-color: get-color('primary');
+      color: get-color('white');
+      text-decoration: none;
+      border-radius: 0 0 0.25rem 0;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:hover:focus {
+      background-color: darken-color(get-color('primary'), 10%);
+    }
+  }
+}
+
+// === ZONES DE CONTENU PRINCIPALES ===
+.rf-main {
+  scroll-margin-top: 1rem;
+}
+
+.rf-header {
+  scroll-margin-top: 1rem;
+}
+
+.rf-nav {
+  scroll-margin-top: 1rem;
+}
+
+.rf-footer {
+  scroll-margin-top: 1rem;
+}

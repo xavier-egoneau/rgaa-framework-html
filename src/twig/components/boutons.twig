@@ -1,0 +1,75 @@
+<!-- components/boutons.twig -->
+<section id="boutons" class="rf-section">
+    <h2>Boutons accessibles</h2>
+    <p>Boutons avec focus visible, support clavier complet et contrastes conformes.</p>
+    
+    <h3>Boutons de base</h3>
+    <div class="rf-example">
+        <button type="button" class="rf-btn rf-btn-primary">Primaire</button>
+        <button type="button" class="rf-btn rf-btn-secondary">Secondaire</button>
+        <button type="button" class="rf-btn rf-btn-success">Succès</button>
+        <button type="button" class="rf-btn rf-btn-danger">Danger</button>
+        <button type="button" class="rf-btn rf-btn-warning">Attention</button>
+        <button type="button" class="rf-btn rf-btn-info">Info</button>
+    </div>
+    
+    <h3>Boutons outline</h3>
+    <div class="rf-example">
+        <button type="button" class="rf-btn rf-btn-outline-primary">Outline primaire</button>
+        <button type="button" class="rf-btn rf-btn-outline-secondary">Outline secondaire</button>
+        <button type="button" class="rf-btn rf-btn-outline-success">Outline succès</button>
+        <button type="button" class="rf-btn rf-btn-outline-danger">Outline danger</button>
+    </div>
+    
+    <h3>Tailles et états</h3>
+    <div class="rf-example">
+        <button type="button" class="rf-btn rf-btn-primary rf-btn-lg">Grand bouton</button>
+        <button type="button" class="rf-btn rf-btn-primary">Bouton normal</button>
+        <button type="button" class="rf-btn rf-btn-primary rf-btn-sm">Petit bouton</button>
+    </div>
+    
+    <div class="rf-example">
+        <button type="button" class="rf-btn rf-btn-primary" disabled>Bouton désactivé</button>
+        <button type="button" class="rf-btn rf-btn-secondary rf-btn-block">Bouton pleine largeur</button>
+    </div>
+    
+    <h3>Boutons avec icônes</h3>
+    <div class="rf-example">
+        <button type="button" class="rf-btn rf-btn-primary">
+            <span aria-hidden="true">📧</span>
+            Envoyer un e-mail
+        </button>
+        
+        <button type="button" class="rf-btn rf-btn-success">
+            <span aria-hidden="true">💾</span>
+            Sauvegarder
+        </button>
+        
+        <button type="button" class="rf-btn rf-btn-secondary" aria-label="Fermer">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong> 
+        <ul>
+            <li>Focus visible sur tous les boutons (Tab pour tester)</li>
+            <li>Activation avec Entrée et Espace</li>
+            <li>Contrastes conformes RGAA (4.5:1 minimum)</li>
+            <li>Icônes décoratives marquées <code>aria-hidden="true"</code></li>
+            <li>Labels explicites pour boutons icône seule</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;button type="button" class="rf-btn rf-btn-primary"&gt;
+    &lt;span aria-hidden="true"&gt;📧&lt;/span&gt;
+    Envoyer un e-mail
+&lt;/button&gt;
+
+&lt;button type="button" class="rf-btn rf-btn-secondary" aria-label="Fermer"&gt;
+    &lt;span aria-hidden="true"&gt;×&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+</section>

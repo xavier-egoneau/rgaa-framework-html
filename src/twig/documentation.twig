@@ -1,0 +1,375 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}Documentation des composants - RGAA Framework{% endblock %}
+
+{% block header_title %}Documentation RGAA Framework{% endblock %}
+{% block header_content %}
+<p>Tous les composants accessibles et conformes RGAA 4.1.2</p>
+{% endblock %}
+
+{% block content %}
+
+<!-- Navigation de la documentation -->
+<nav class="rf-nav rf-nav-horizontal" role="navigation" aria-label="Navigation de la documentation">
+    <div class="rf-container">
+        <ul>
+            <li><a href="#grille" class="rf-nav-link">Système de grille</a></li>
+            <li><a href="#boutons" class="rf-nav-link">Boutons</a></li>
+            <li><a href="#formulaires" class="rf-nav-link">Formulaires</a></li>
+            <li><a href="#modales" class="rf-nav-link">Modales</a></li>
+            <li><a href="#navigation" class="rf-nav-link">Navigation</a></li>
+            <li><a href="#dropdowns" class="rf-nav-link">Dropdowns</a></li>
+            <li><a href="#alertes" class="rf-nav-link">Alertes</a></li>
+            <li><a href="#accordeons" class="rf-nav-link">Accordéons</a></li>
+            <li><a href="#onglets" class="rf-nav-link">Onglets</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Inclusion des composants -->
+{% include "components/grille.twig" %}
+{% include "components/boutons.twig" %}
+{% include "components/formulaires.twig" %}
+{% include "components/modales.twig" %}
+{% include "components/navigation.twig" %}
+{% include "components/dropdowns.twig" %}
+{% include "components/alertes.twig" %}
+{% include "components/accordeons.twig" %}
+{% include "components/onglets.twig" %}
+
+<!-- Exemples avancés -->
+<section id="exemples-avances" class="rf-section">
+    <h2>Exemples d'usage complets</h2>
+    <p>Combinaisons de composants pour des interfaces complexes et accessibles.</p>
+    
+    <h3>Interface d'administration complète</h3>
+    <div class="rf-example">
+        <div class="rf-admin-layout">
+            <!-- Header avec navigation et dropdown utilisateur -->
+            <header class="rf-navbar rf-navbar-dark" style="background-color: #495057;">
+                <div class="rf-container-fluid">
+                    <a class="rf-navbar-brand" href="#">Admin Panel</a>
+                    
+                    <div class="rf-navbar-collapse">
+                        <ul class="rf-navbar-nav" style="margin-left: auto;">
+                            <li class="rf-nav-item rf-dropdown">
+                                <a class="rf-nav-link rf-dropdown-toggle" href="#" role="button">
+                                    👤 Admin User
+                                </a>
+                                <div class="rf-dropdown-menu rf-dropdown-menu-end">
+                                    <a class="rf-dropdown-item" href="#">Mon profil</a>
+                                    <a class="rf-dropdown-item" href="#">Paramètres</a>
+                                    <div class="rf-dropdown-divider"></div>
+                                    <a class="rf-dropdown-item" href="#">Déconnexion</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Alertes système -->
+            <div class="rf-alert rf-alert-warning rf-alert-dismissible" role="alert">
+                <strong>Maintenance programmée :</strong> Le système sera indisponible dimanche de 2h à 4h.
+                <button type="button" class="rf-alert-close" aria-label="Fermer cette alerte">
+                    <span class="rf-sr-only">Fermer</span>
+                </button>
+            </div>
+            
+            <!-- Interface avec onglets -->
+            <div class="rf-container-fluid">
+                <div class="rf-tabs">
+                    <ul class="rf-tab-list" role="tablist">
+                        <li class="rf-tab-item">
+                            <a class="rf-tab-link rf-active" href="#dashboard-tab" role="tab">
+                                📊 Tableau de bord
+                            </a>
+                        </li>
+                        <li class="rf-tab-item">
+                            <a class="rf-tab-link" href="#users-tab" role="tab">
+                                👥 Gestion utilisateurs
+                            </a>
+                        </li>
+                        <li class="rf-tab-item">
+                            <a class="rf-tab-link" href="#settings-tab" role="tab">
+                                ⚙️ Paramètres
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="rf-tab-content">
+                        <!-- Onglet Dashboard -->
+                        <div class="rf-tab-pane rf-active rf-show" id="dashboard-tab" role="tabpanel">
+                            <div class="rf-row">
+                                <div class="rf-col-md-4">
+                                    <div class="rf-alert rf-alert-success">
+                                        <strong>1,234</strong><br>
+                                        Utilisateurs actifs
+                                    </div>
+                                </div>
+                                <div class="rf-col-md-4">
+                                    <div class="rf-alert rf-alert-info">
+                                        <strong>89%</strong><br>
+                                        Taux de satisfaction
+                                    </div>
+                                </div>
+                                <div class="rf-col-md-4">
+                                    <div class="rf-alert rf-alert-warning">
+                                        <strong>42</strong><br>
+                                        Tickets ouverts
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Accordéon pour les détails -->
+                            <div class="rf-accordion">
+                                <div class="rf-accordion-item">
+                                    <h3 class="rf-accordion-header">
+                                        <button class="rf-accordion-button rf-collapsed" type="button">
+                                            📈 Statistiques détaillées
+                                        </button>
+                                    </h3>
+                                    <div class="rf-accordion-collapse">
+                                        <div class="rf-accordion-body">
+                                            <p>Analyse approfondie des métriques de performance...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="rf-accordion-item">
+                                    <h3 class="rf-accordion-header">
+                                        <button class="rf-accordion-button rf-collapsed" type="button">
+                                            🔔 Alertes système
+                                        </button>
+                                    </h3>
+                                    <div class="rf-accordion-collapse">
+                                        <div class="rf-accordion-body">
+                                            <p>Surveillance en temps réel des services...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Onglet Utilisateurs -->
+                        <div class="rf-tab-pane" id="users-tab" role="tabpanel">
+                            <div class="rf-d-flex rf-justify-between rf-align-center" style="margin-bottom: 1rem;">
+                                <h3>Gestion des utilisateurs</h3>
+                                <button type="button" 
+                                        class="rf-btn rf-btn-primary" 
+                                        data-rf-modal-trigger="#modal-nouvel-utilisateur">
+                                    + Nouvel utilisateur
+                                </button>
+                            </div>
+                            
+                            <!-- Filtres avec dropdowns -->
+                            <div class="rf-row" style="margin-bottom: 1rem;">
+                                <div class="rf-col-md-4">
+                                    <div class="rf-input-group">
+                                        <input type="search" class="rf-form-control" placeholder="Rechercher...">
+                                        <button class="rf-btn rf-btn-outline-secondary" type="button">🔍</button>
+                                    </div>
+                                </div>
+                                <div class="rf-col-md-3">
+                                    <div class="rf-dropdown">
+                                        <button class="rf-dropdown-toggle rf-btn rf-btn-outline-secondary" type="button" style="width: 100%;">
+                                            Filtrer par statut
+                                        </button>
+                                        <div class="rf-dropdown-menu">
+                                            <a class="rf-dropdown-item" href="#">Tous les statuts</a>
+                                            <a class="rf-dropdown-item" href="#">Actifs</a>
+                                            <a class="rf-dropdown-item" href="#">Inactifs</a>
+                                            <a class="rf-dropdown-item" href="#">Suspendus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rf-col-md-3">
+                                    <div class="rf-dropdown">
+                                        <button class="rf-dropdown-toggle rf-btn rf-btn-outline-secondary" type="button" style="width: 100%;">
+                                            Actions groupées
+                                        </button>
+                                        <div class="rf-dropdown-menu">
+                                            <a class="rf-dropdown-item" href="#">Activer sélection</a>
+                                            <a class="rf-dropdown-item" href="#">Désactiver sélection</a>
+                                            <div class="rf-dropdown-divider"></div>
+                                            <a class="rf-dropdown-item" href="#">Supprimer sélection</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p>Interface de gestion des utilisateurs avec tableaux, filtres et actions...</p>
+                        </div>
+                        
+                        <!-- Onglet Paramètres -->
+                        <div class="rf-tab-pane" id="settings-tab" role="tabpanel">
+                            <h3>Configuration système</h3>
+                            <form data-rf-validate>
+                                <div class="rf-form-group">
+                                    <label for="site-name" class="rf-form-label">Nom du site</label>
+                                    <input type="text" id="site-name" class="rf-form-control" value="Mon Application">
+                                </div>
+                                
+                                <div class="rf-form-group">
+                                    <label for="admin-email" class="rf-form-label">E-mail administrateur</label>
+                                    <input type="email" id="admin-email" class="rf-form-control" value="admin@exemple.com">
+                                </div>
+                                
+                                <button type="submit" class="rf-btn rf-btn-primary">Sauvegarder</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modale nouvel utilisateur -->
+    <dialog id="modal-nouvel-utilisateur" class="rf-modal rf-fade">
+        <div class="rf-modal-dialog rf-modal-lg">
+            <div class="rf-modal-content">
+                <div class="rf-modal-header">
+                    <h4 class="rf-modal-title">Créer un nouvel utilisateur</h4>
+                    <button type="button" class="rf-modal-close" data-rf-modal-close>
+                        <span class="rf-sr-only">Fermer</span>
+                    </button>
+                </div>
+                <div class="rf-modal-body">
+                    <form data-rf-validate>
+                        <div class="rf-row">
+                            <div class="rf-col-md-6">
+                                <div class="rf-form-group">
+                                    <label for="admin-prenom" class="rf-form-label">
+                                        Prénom <span class="rf-required">obligatoire</span>
+                                    </label>
+                                    <input type="text" id="admin-prenom" class="rf-form-control" required>
+                                </div>
+                            </div>
+                            <div class="rf-col-md-6">
+                                <div class="rf-form-group">
+                                    <label for="admin-nom" class="rf-form-label">
+                                        Nom <span class="rf-required">obligatoire</span>
+                                    </label>
+                                    <input type="text" id="admin-nom" class="rf-form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rf-form-group">
+                            <label for="admin-email-new" class="rf-form-label">
+                                E-mail <span class="rf-required">obligatoire</span>
+                            </label>
+                            <input type="email" id="admin-email-new" class="rf-form-control" required>
+                        </div>
+                        
+                        <div class="rf-form-group">
+                            <label for="admin-role" class="rf-form-label">Rôle</label>
+                            <select id="admin-role" class="rf-form-select">
+                                <option value="user">Utilisateur</option>
+                                <option value="moderator">Modérateur</option>
+                                <option value="admin">Administrateur</option>
+                            </select>
+                        </div>
+                        
+                        <div class="rf-form-check">
+                            <input type="checkbox" id="admin-notification" class="rf-form-check-input">
+                            <label for="admin-notification" class="rf-form-check-label">
+                                Envoyer un e-mail de bienvenue
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="rf-modal-footer">
+                    <button type="button" class="rf-btn rf-btn-secondary" data-rf-modal-close>
+                        Annuler
+                    </button>
+                    <button type="submit" class="rf-btn rf-btn-primary">
+                        Créer l'utilisateur
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <div class="rf-accessibility-note">
+        <strong>Interface complète accessible :</strong>
+        <ul>
+            <li>Skip links automatiques vers les sections principales</li>
+            <li>Navigation par onglets avec ARIA complet</li>
+            <li>Accordéons pour organiser l'information</li>
+            <li>Dropdowns pour les actions et filtres</li>
+            <li>Modales avec formulaires validés</li>
+            <li>Alertes système avec fermeture</li>
+            <li>Focus management entre tous les composants</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Guide de test global -->
+<section id="guide-test" class="rf-section">
+    <h2>Guide de test d'accessibilité</h2>
+    <p>Comment tester l'accessibilité de cette page et des composants.</p>
+    
+    <div class="rf-alert rf-alert-info" role="alert">
+        <strong>💡 Astuce :</strong> Cette page sert de démonstration complète. 
+        Utilisez-la pour tester tous les aspects d'accessibilité du framework.
+    </div>
+    
+    <h3>Tests clavier essentiels</h3>
+    <div class="rf-test-checklist">
+        <ul>
+            <li><strong>Tab :</strong> Navigue vers l'élément suivant</li>
+            <li><strong>Shift + Tab :</strong> Navigue vers l'élément précédent</li>
+            <li><strong>Entrée :</strong> Active boutons et liens</li>
+            <li><strong>Espace :</strong> Active boutons et checkboxes</li>
+            <li><strong>Flèches :</strong> Navigation dans les menus, onglets et accordéons</li>
+            <li><strong>Échap :</strong> Ferme modales, dropdowns et alertes</li>
+            <li><strong>Home/End :</strong> Premier/dernier élément dans les menus</li>
+        </ul>
+    </div>
+    
+    <h3>Tests avec lecteur d'écran</h3>
+    <div class="rf-test-checklist">
+        <ul>
+            <li>Téléchargez <a href="https://www.nvaccess.org/" target="_blank" rel="noopener">NVDA (gratuit)</a></li>
+            <li>Activez le lecteur et naviguez avec Tab</li>
+            <li>Vérifiez que tous les éléments sont annoncés correctement</li>
+            <li>Testez les changements d'état (ouverture modales, accordéons, onglets)</li>
+            <li>Vérifiez les landmarks (navigation H pour les titres)</li>
+            <li>Testez les annonces des alertes et messages d'erreur</li>
+        </ul>
+    </div>
+    
+    <h3>Outils automatisés recommandés</h3>
+    <div class="rf-test-checklist">
+        <ul>
+            <li><strong>axe DevTools :</strong> Extension navigateur gratuite</li>
+            <li><strong>WAVE :</strong> Évaluation en ligne sur wave.webaim.org</li>
+            <li><strong>Lighthouse :</strong> Audit intégré Chrome (onglet Accessibilité)</li>
+            <li><strong>Validation W3C :</strong> validator.w3.org pour le HTML</li>
+            <li><strong>Colour Contrast Analyser :</strong> Vérification des contrastes</li>
+        </ul>
+    </div>
+    
+    <h3>Test interactif</h3>
+    <div class="rf-example">
+        <button type="button" 
+                class="rf-btn rf-btn-success" 
+                onclick="RGAAAlert.success('Bravo ! Vous testez l\'accessibilité correctement 🎉')">
+            Tester les alertes JavaScript
+        </button>
+        
+        <button type="button" 
+                class="rf-btn rf-btn-info"
+                onclick="console.log('Stats accessibilité:', window.RGAA.getAccessibilityStats())">
+            Voir les statistiques d'accessibilité
+        </button>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Conseil :</strong> Utilisez la combinaison de tests manuels et automatisés pour une couverture complète. 
+        L'accessibilité ne peut pas être entièrement testée automatiquement.
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,333 @@
+// core/_mixins.scss
+
+@use "sass:map";
+@use "sass:color";
+@use "sass:math";
+@use "variables" as *;
+
+// === FONCTION COULEUR ===
+@function get-color($name) {
+  @return map.get($colors, $name);
+}
+
+// === BREAKPOINTS ===
+@mixin breakpoint($size) {
+  @if map.has-key($grid-breakpoints, $size) {
+    @media (min-width: map.get($grid-breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$size}` n'existe pas dans $grid-breakpoints.";
+  }
+}
+
+// === SCREEN READER ONLY ===
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin sr-only-focusable {
+  &:focus,
+  &:active {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: inherit !important;
+  }
+}
+
+// === FOCUS PERSONNALISABLE ===
+@mixin focus-ring($color: $focus-color, $width: $focus-width, $offset: $focus-offset) {
+  &:focus {
+    outline: $width solid $color;
+    outline-offset: $offset;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// === BOUTONS ===
+@mixin button-base {
+  // Toutes les propriétés AVANT les règles imbriquées
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: $font-size-base;
+  font-weight: 400;
+  line-height: $line-height-base;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+  
+  // Règles imbriquées APRÈS les propriétés
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+  
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+}
+
+// === BOUTONS VARIANTES ===
+@mixin button-variant($bg-color, $border-color: $bg-color, $text-color: get-color('white'), $hover-bg: null, $hover-border: null) {
+  $hover-bg: if($hover-bg, $hover-bg, darken-color($bg-color, 7.5%));
+  $hover-border: if($hover-border, $hover-border, darken-color($border-color, 10%));
+  
+  color: $text-color;
+  background-color: $bg-color;
+  border-color: $border-color;
+  
+  &:hover {
+    color: $text-color;
+    background-color: $hover-bg;
+    border-color: $hover-border;
+  }
+  
+  &:focus {
+    color: $text-color;
+    background-color: $hover-bg;
+    border-color: $hover-border;
+    @include focus-ring();
+  }
+  
+  &:active {
+    color: $text-color;
+    background-color: darken-color($bg-color, 10%);
+    border-color: darken-color($border-color, 12.5%);
+  }
+}
+
+@mixin button-outline-variant($color) {
+  color: $color;
+  border-color: $color;
+  background-color: transparent;
+  
+  &:hover,
+  &:focus {
+    color: get-color('white');
+    background-color: $color;
+    border-color: $color;
+  }
+  
+  &:focus {
+    @include focus-ring();
+  }
+}
+
+// === CONTRASTE ACCESSIBLE ===
+@mixin ensure-contrast($bg-color, $text-color: null) {
+  background-color: $bg-color;
+  
+  @if $text-color {
+    color: $text-color;
+  } @else {
+    // Logique automatique pour choisir texte clair/sombre
+    @if color.lightness($bg-color) > 50% {
+      color: get-color('dark');
+    } @else {
+      color: get-color('white');
+    }
+  }
+}
+
+// === UTILITAIRES DE FLEXBOX ===
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// === TRANSITIONS ===
+@mixin transition($properties: all, $duration: 0.15s, $timing: ease-in-out) {
+  transition: $properties $duration $timing;
+  
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+// === CLEARFIX ===
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// === DIMENSIONNEMENT ===
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// === POSITIONNEMENT ABSOLU CENTRÉ ===
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// === TRUNCATE TEXT ===
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// === VISUALLY HIDDEN ===
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// === FONCTIONS COULEUR MODERNES ===
+@function darken-color($color, $amount) {
+  @return color.adjust($color, $lightness: -$amount);
+}
+
+@function lighten-color($color, $amount) {
+  @return color.adjust($color, $lightness: $amount);
+}
+
+@function alpha-color($color, $alpha) {
+  @return color.adjust($color, $alpha: -#{1 - $alpha});
+}
+
+// === FONCTION DE CONTRASTE ===
+@function contrast-ratio($color1, $color2) {
+  $l1: color.lightness($color1);
+  $l2: color.lightness($color2);
+  
+  @if $l1 > $l2 {
+    @return math.div($l1, $l2);
+  } @else {
+    @return math.div($l2, $l1);
+  }
+}
+
+// === MEDIA QUERIES HELPERS ===
+@mixin mobile-only {
+  @media (max-width: #{map.get($grid-breakpoints, sm) - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{map.get($grid-breakpoints, sm)}) and (max-width: #{map.get($grid-breakpoints, lg) - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: #{map.get($grid-breakpoints, lg)}) {
+    @content;
+  }
+}
+
+// === MIXINS FORMULAIRES ===
+@mixin form-control-focus($color: $focus-color) {
+  &:focus {
+    border-color: $color;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+  }
+}
+
+@mixin form-validation-state($state, $color) {
+  .rf-#{$state}-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: $color;
+  }
+  
+  .rf-was-validated .rf-form-control:#{$state},
+  .rf-form-control.rf-is-#{$state} {
+    border-color: $color;
+    
+    &:focus {
+      border-color: $color;
+      box-shadow: 0 0 0 0.25rem rgba($color, 0.25);
+    }
+    
+    ~ .rf-#{$state}-feedback {
+      display: block;
+    }
+  }
+}
+
+// === ANIMATIONS ===
+@mixin fade-in($duration: 0.3s) {
+  opacity: 0;
+  animation: fadeIn $duration ease-in-out forwards;
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@mixin slide-in-up($duration: 0.3s, $distance: 50px) {
+  transform: translateY($distance);
+  animation: slideInUp $duration ease-out forwards;
+  
+  @keyframes slideInUp {
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transform: none;
+  }
+}

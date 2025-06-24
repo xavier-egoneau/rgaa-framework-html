@@ -1,0 +1,131 @@
+<!-- components/alertes.twig -->
+<section id="alertes" class="rf-section">
+    <h2>Messages d'alerte</h2>
+    <p>Messages d'information accessibles avec rôles ARIA appropriés et contrastes conformes.</p>
+    
+    <h3>Alertes de base</h3>
+    <div class="rf-example">
+        <div class="rf-alert rf-alert-primary" role="alert">
+            <strong>Information :</strong> Ceci est un message d'information important pour l'utilisateur.
+        </div>
+        
+        <div class="rf-alert rf-alert-success" role="alert">
+            <strong>Succès :</strong> Votre opération a été réalisée avec succès !
+        </div>
+        
+        <div class="rf-alert rf-alert-warning" role="alert">
+            <strong>Attention :</strong> Veuillez vérifier les informations saisies avant de continuer.
+        </div>
+        
+        <div class="rf-alert rf-alert-danger" role="alert">
+            <strong>Erreur :</strong> Une erreur est survenue lors du traitement de votre demande.
+        </div>
+        
+        <div class="rf-alert rf-alert-info" role="alert">
+            <strong>Info :</strong> Cette fonctionnalité sera bientôt disponible.
+        </div>
+    </div>
+    
+    <h3>Alertes avec icônes</h3>
+    <div class="rf-example">
+        <div class="rf-alert rf-alert-success rf-alert-with-icon" role="alert">
+            <span class="rf-alert-icon" aria-hidden="true">✅</span>
+            <div class="rf-alert-content">
+                <strong>Fichier téléchargé :</strong> Votre document a été téléchargé avec succès.
+            </div>
+        </div>
+        
+        <div class="rf-alert rf-alert-warning rf-alert-with-icon" role="alert">
+            <span class="rf-alert-icon" aria-hidden="true">⚠️</span>
+            <div class="rf-alert-content">
+                <strong>Attention :</strong> Votre session expire dans 5 minutes.
+            </div>
+        </div>
+        
+        <div class="rf-alert rf-alert-danger rf-alert-with-icon" role="alert">
+            <span class="rf-alert-icon" aria-hidden="true">❌</span>
+            <div class="rf-alert-content">
+                <strong>Échec de l'authentification :</strong> Nom d'utilisateur ou mot de passe incorrect.
+            </div>
+        </div>
+    </div>
+    
+    <h3>Alertes dismissibles</h3>
+    <div class="rf-example">
+        <div class="rf-alert rf-alert-info rf-alert-dismissible" role="alert">
+            <strong>Nouvelle fonctionnalité :</strong> Découvrez notre nouvel éditeur de texte amélioré.
+            <button type="button" class="rf-alert-close" aria-label="Fermer cette alerte">
+                <span class="rf-sr-only">Fermer</span>
+            </button>
+        </div>
+        
+        <div class="rf-alert rf-alert-warning rf-alert-dismissible" role="alert">
+            <strong>Maintenance programmée :</strong> Le site sera indisponible dimanche de 2h à 4h du matin.
+            <button type="button" class="rf-alert-close" aria-label="Fermer cette alerte">
+                <span class="rf-sr-only">Fermer</span>
+            </button>
+        </div>
+    </div>
+    
+    <h3>Alertes avec actions</h3>
+    <div class="rf-example">
+        <div class="rf-alert rf-alert-primary" role="alert">
+            <h4>Mise à jour disponible</h4>
+            <p>Une nouvelle version de l'application est disponible. Elle inclut des corrections de sécurité importantes.</p>
+            <div class="rf-alert-actions">
+                <button type="button" class="rf-btn rf-btn-primary rf-btn-sm">Mettre à jour maintenant</button>
+                <button type="button" class="rf-btn rf-btn-outline-secondary rf-btn-sm">Plus tard</button>
+            </div>
+        </div>
+        
+        <div class="rf-alert rf-alert-danger" role="alert">
+            <h4>Compte suspendu</h4>
+            <p>Votre compte a été temporairement suspendu en raison d'activités suspectes.</p>
+            <div class="rf-alert-actions">
+                <button type="button" class="rf-btn rf-btn-danger rf-btn-sm">Contacter le support</button>
+                <a href="#" class="rf-btn rf-btn-outline-secondary rf-btn-sm">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Tailles d'alertes</h3>
+    <div class="rf-example">
+        <div class="rf-alert rf-alert-success rf-alert-sm" role="alert">
+            <strong>Petite alerte :</strong> Message compact pour notifications légères.
+        </div>
+        
+        <div class="rf-alert rf-alert-info" role="alert">
+            <strong>Alerte normale :</strong> Taille par défaut pour la plupart des messages.
+        </div>
+        
+        <div class="rf-alert rf-alert-warning rf-alert-lg" role="alert">
+            <strong>Grande alerte :</strong> Format étendu pour messages importants nécessitant plus d'attention.
+        </div>
+    </div>
+    
+    <div class="rf-accessibility-note">
+        <strong>Accessibilité :</strong>
+        <ul>
+            <li>Attribut <code>role="alert"</code> pour annonce immédiate aux lecteurs d'écran</li>
+            <li>Contrastes conformes RGAA (4.5:1 minimum)</li>
+            <li>Icônes décoratives marquées <code>aria-hidden="true"</code></li>
+            <li>Boutons de fermeture avec labels explicites</li>
+            <li>Actions clairement identifiées et accessibles</li>
+            <li>Support des animations respectueuses</li>
+        </ul>
+    </div>
+    
+    <div class="rf-code-example">
+        <h4>Code HTML :</h4>
+        <pre><code>&lt;div class="rf-alert rf-alert-success" role="alert"&gt;
+    &lt;strong&gt;Succès :&lt;/strong&gt; Votre opération a été réalisée avec succès !
+&lt;/div&gt;
+
+&lt;div class="rf-alert rf-alert-warning rf-alert-dismissible" role="alert"&gt;
+    &lt;strong&gt;Attention :&lt;/strong&gt; Message important.
+    &lt;button type="button" class="rf-alert-close" aria-label="Fermer cette alerte"&gt;
+        &lt;span class="rf-sr-only"&gt;Fermer&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</section>

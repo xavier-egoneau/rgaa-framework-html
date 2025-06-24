@@ -1,0 +1,30 @@
+// utilities/_screenreader.scss
+
+@use "../core/mixins" as *;
+@use "../core/variables" as *;  // if using variables
+
+// === SCREEN READER ONLY ===
+.rf-sr-only {
+  @include sr-only;
+}
+
+.rf-sr-only-focusable {
+  @include sr-only;
+  @include sr-only-focusable;
+}
+
+// === ARIA LIVE REGIONS ===
+.rf-aria-live {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+// === CONTRÔLE DE VISIBILITÉ ARIA ===
+.rf-aria-hidden {
+  &[aria-hidden="true"] {
+    display: none !important;
+  }
+}

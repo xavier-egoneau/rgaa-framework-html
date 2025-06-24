@@ -1,0 +1,63 @@
+// main.scss
+
+// === FORWARD DES VARIABLES (accessible partout) ===
+@forward 'core/variables';
+
+// === MODULES ===
+@use 'core/variables' as *;
+@use 'core/mixins' as *;
+
+// === CORE ===
+@use 'core/reset';
+@use 'core/grid';
+
+// === UTILITIES ===
+@use 'utilities/screenreader';
+@use 'utilities/focus';
+@use 'utilities/skip-links';
+
+// === COMPONENTS ===
+@use 'components/modal';
+@use 'components/navigation';
+@use 'components/forms';
+@use 'components/dropdowns';
+@use 'components/alertes';
+@use 'components/accordeons';
+@use 'components/onglets';
+
+// === PRINT STYLES ===
+@media print {
+  .rf-skip-links,
+  .rf-modal-backdrop,
+  .rf-modal,
+  .rf-dropdown-menu,
+  .rf-navbar-toggler,
+  .rf-alert-dismissible .rf-alert-close,
+  .rf-accordion-button::after,
+  .rf-tab-list {
+    display: none !important;
+  }
+  
+  .rf-btn {
+    border: 1px solid #000 !important;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  // Affiche tout le contenu des accordéons et onglets
+  .rf-accordion-collapse,
+  .rf-tab-pane {
+    display: block !important;
+    height: auto !important;
+  }
+  
+  .rf-accordion-button {
+    font-weight: bold;
+    
+    &.rf-collapsed::before {
+      content: "▼ ";
+    }
+  }
+}

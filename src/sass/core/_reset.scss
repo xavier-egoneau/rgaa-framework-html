@@ -1,0 +1,74 @@
+// _reset.scss
+
+@use "mixins" as *;
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; // Respect des préférences utilisateur
+  scroll-behavior: smooth;
+  
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: get-color('dark');
+  background-color: get-color('white');
+}
+
+// === FOCUS VISIBLE ===
+:focus {
+  outline: $focus-width $focus-style $focus-color;
+  outline-offset: $focus-offset;
+}
+
+// Suppression de l'outline uniquement pour la souris
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// === LIENS ===
+a {
+  color: get-color('primary');
+  text-decoration: underline;
+  
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+// === IMAGES ===
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// === TABLEAUX ===
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+// === BOUTONS ===
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
